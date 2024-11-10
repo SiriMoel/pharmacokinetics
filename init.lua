@@ -1,28 +1,26 @@
---dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
+dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
+dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
 
---dofile_once("mods/pharmacokinetics/lib/nxml.lua")
---local nxml = dofile_once("mods/pharmacokinetics/lib/nxml.lua")
+local nxml = dofile_once("mods/pharmacokinetics/lib/nxml.lua")
 
 -- nxml
-print("OI WE'RE FUCKIN RUNNING")
---local materials_altered = ""
---local materials = ModTextFileGetContent("data/materials.xml")
---local xml = nxml.parse(materials)
---print(materials)
---[[for element in xml:each_child() do
-    print("WE'RE IN THE LOOP")
-    --print("moldos " .. type(element.attr.tags))
-    --[[if string.find(element.attr.tags, "[magic_liquid]") then
-        local children = element:all_of("StatusEffects")
-        for child in children:each_child() do
-            if child.name == "Ingestion" then
-                print("Ingestion found!")
+local materials = ModTextFileGetContent("data/materials.xml")
+local xml = nxml.parse(materials)
+for element in xml:each_child() do
+    if element.attr.tags ~= nil and string.find(element.attr.tags, "[^%a]magic_liquid[^%a]") then
+        for child in element:each_of("StatusEffects") do
+            for childdos in child:each_of("Ingestion") do
+                childdos:add_child(nxml.parse([[
+                    <StatusEffect type="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED" amount="1" />
+                ]]))
             end
         end
-        materials_altered = materials_altered .. "," .. element.attr.name
     end
-end]]
---print(materials_altered)
+end
+ModTextFileSetContent("data/materials.xml", tostring(xml))
+
+-- set & append
+ModLuaFileAppend( "data/scripts/status_effects/status_list.lua", "mods/pharmacokinetics/files/status_list.lua" )
 
 -- pixel scenes (thanks graham)
 local function add_scene(table)
@@ -56,9 +54,16 @@ function OnPlayerSpawned( player )
 
     local px, py = EntityGetTransform(player)
 
-	-- gui here
+	dofile_once("mods/pharmacokinetics/files/gui.lua")
 
     if GameHasFlagRun("pharmacokinetics_init") then return end
+
+    GlobalsSetValue("pharmacokinetics.amount", "0")
+
+    EntityAddComponent2(player, "LuaComponent", {
+		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",
+		execute_every_n_frame=50,
+	})
 
     GameAddFlagRun("pharmacokinetics_init")
 end
