@@ -1,7 +1,7 @@
-dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
+--dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
 
 --dofile_once("mods/pharmacokinetics/lib/nxml.lua")
-local nxml = dofile_once("mods/pharmacokinetics/lib/nxml.lua")
+--local nxml = dofile_once("mods/pharmacokinetics/lib/nxml.lua")
 
 -- nxml
 print("OI WE'RE FUCKIN RUNNING")
