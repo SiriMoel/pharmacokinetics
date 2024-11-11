@@ -12,4 +12,6 @@ function IncreasePharmaBarAmount(amount)
     GlobalsSetValue("pharmacokinetics.amount", tostring(baramount + amount))
 end
 
--- it is slow. why is it slow?
+function SetPharmaBarAmount(amount)
+    GlobalsSetValue("pharmacokinetics.amount", tostring(amount))
+end

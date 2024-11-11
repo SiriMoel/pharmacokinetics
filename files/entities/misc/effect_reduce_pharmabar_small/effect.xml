@@ -1,0 +1,23 @@
+<Entity tags="pharma_thing">
+	
+	<InheritTransformComponent>
+    </InheritTransformComponent>	
+    
+    <GameEffectComponent 
+        effect="PHARMACOKINETICS_REDUCE_PHARMABAR_SMALL"
+        frames="2"
+    >
+	</GameEffectComponent>
+
+    <LuaComponent
+        script_source_file="mods/pharmacokinetics/files/entities/misc/effect_reduce_pharmabar_small/effect.lua"
+        execute_on_added="1"
+        remove_after_executed="1"
+    ></LuaComponent>
+	
+	<LifetimeComponent
+		lifetime="2"
+		>
+	</LifetimeComponent>
+
+</Entity>

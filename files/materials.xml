@@ -1,0 +1,87 @@
+<Materials>
+
+	<CellData
+		name="pharma_pharmadust"
+		ui_name="Pharmadust"
+  		tags="[sand_ground],[corrodible],[alchemy],[food]"
+		burnable="0"
+		density="6"
+		durability="9"
+		cell_type="liquid"
+		wang_color="ffD0C7CE"
+		generates_smoke="0"
+		liquid_gravity="1.2"
+		liquid_sand="1"
+		on_fire="0"
+		requires_oxygen="1"
+		temperature_of_fire="10"
+		hp="10000" 
+		audio_physics_material_event="sand"
+		audio_physics_material_wall="sand"
+		audio_physics_material_solid="bone"
+		>
+    	<Graphics
+			texture_file="mods/pharmacokinetics/files/materials_gfx/pharmadust.png"
+			color="ffD0C7CE" >
+    	</Graphics>
+		<StatusEffects>
+			<Ingestion>
+				<StatusEffect type="PHARMACOKINETICS_REDUCE_PHARMABAR_SMALL" amount="1" />
+			</Ingestion>
+		</StatusEffects>
+  	</CellData>
+
+	<CellData
+		name="pharma_aq_pharmadust"
+		ui_name="Aqueous Pharmadust"
+	  	tags="[liquid],[water],[corrodible],[freezable],[alchemy]"
+		burnable="0"
+		density="5"
+		cell_type="liquid"
+		wang_color="900D5D50"
+		generates_smoke="0"
+		liquid_gravity="1.5"
+		liquid_sand="0"
+		liquid_stains_self="0"
+		on_fire="0"
+		requires_oxygen="1"
+		temperature_of_fire="10" 
+		danger_water="1"
+		liquid_stains="1"
+		liquid_sprite_stain_ignited_drop_chance="10"
+		liquid_sprite_stains_check_offset="-1"
+		warmth_melts_to_material="steam"
+		warmth_melts_chance_rev="500"
+		cold_freezes_to_material="ice_static"
+		>
+		<Graphics
+			texture_file="mods/pharmacokinetics/files/materials_gfx/aq_pharmadust.png"
+			color="A0376259"
+			>
+		</Graphics>
+		<StatusEffects>
+			<Stains>
+				<StatusEffect type="WET" />
+			</Stains>
+			<Ingestion>
+				<StatusEffect type="PHARMACOKINETICS_REDUCE_PHARMABAR_SMALL" amount="1" />
+			</Ingestion>
+		</StatusEffects>
+  	</CellData>
+
+	<Reaction probability="20"
+		input_cell1="[fire]" input_cell2="pharma_aq_pharmadust"
+		output_cell1="[fire]" output_cell2="steam" output_cell3="pharma_pharmadust" >
+  	</Reaction>
+
+	<Reaction probability="60"
+		input_cell1="water" input_cell2="pharma_pharmadust"
+		output_cell1="pharma_aq_pharmadust" output_cell2="water" >
+  	</Reaction>
+
+	<Reaction probability="100"
+		input_cell1="radioactive_liquid" input_cell2="bone"
+		output_cell1="pharma_pharmadust" output_cell2="pharma_pharmadust" >
+  	</Reaction>
+
+</Materials>

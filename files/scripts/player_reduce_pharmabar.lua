@@ -10,10 +10,15 @@ if baramount > 0 then
     IncreasePharmaBarAmount(-1)
 end
 
-if baramount > 250 then
+if baramount >= 400 and not GameHasFlagRun("pharma_warned") then
     GamePrint("Watch it!")
+    GameAddFlagRun("pharma_warned")
 end
 
-if baramount >= 300 then
+if baramount < 400 and GameHasFlagRun("pharma_warned") then
+    GameRemoveFlagRun("pharma_warned")
+end
+
+if baramount >= 500 then
     EntityInflictDamage(player, 1000000000, "DAMAGE_CURSE", "Overdose :(", "BLOOD_EXPLOSION", x, y, player, x, y, 0) -- will be replaced with death countdown later maybe
 end
