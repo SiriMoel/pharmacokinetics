@@ -48,7 +48,7 @@ local function add_scene(table)
 end
 
 local scenes = {
-
+	{ 0, -200, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", true },
 }
 
 add_scene(scenes)
