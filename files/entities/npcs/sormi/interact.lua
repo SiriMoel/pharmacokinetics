@@ -18,16 +18,19 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                 func = function(dialog)
                     dialog.show({
                         text = "Okay.",
-                        options = shop({
+                        options = Shop({
+                            -- mystery magical liquid flask
                             {
-                                name = "Magical liquid flask",
+                                name = "Mystery magical liquid flask",
                                 desc = "A normal flask filled with a random magical liquid!",
                                 price = 300,
                                 func = function(x, y)
-                                    EntityLoad("", x, y)
+                                    EntityLoad("mods/pharmacokinetics/files/entities/items/potion_random_magic/item.xml", x, y)
                                     SetShopMultiplier(GetShopMultiplier() * 1.01)
                                 end,
                             },
+                            -- impressionable seed (grow plant)
+                            -- 
                         }),
                     })
                 end,
@@ -35,7 +38,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
             {
                 text="Close",
                 func = function(dialog)
-                    
+                    dialog.close()
                 end,
             },
         },
