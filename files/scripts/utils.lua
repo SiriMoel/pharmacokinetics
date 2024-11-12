@@ -85,6 +85,7 @@ function CanAfford(amount)
 end
 
 ---@param spent boolean if the player's money_spent should be increased.
+-- usage: if ReduceMoney(100, true) then EntityLoad("thing", x, y) end
 function ReduceMoney(amount, spent)
     local player = EntityGetWithTag("player_unit")[1]
     local comp_wallet = EntityGetFirstComponentIncludingDisabled(player, "WalletComponent") or 0
@@ -92,7 +93,7 @@ function ReduceMoney(amount, spent)
     local moneyspent = ComponentGetValue2(comp_wallet, "money_spent")
     if CanAfford(amount) == false then
         GamePrint("You cannot afford that.")
-        return
+        return false
     end
     money = money - amount
     ComponentSetValue2(comp_wallet, "money", money)
@@ -100,6 +101,7 @@ function ReduceMoney(amount, spent)
         moneyspent = moneyspent + amount
         ComponentSetValue2(comp_wallet, "money_spent", moneyspent)
     end
+    return true
 end
 
 function AddMoney(amount)
@@ -114,4 +116,63 @@ function HeldItem(player)
     local comp_inv = EntityGetFirstComponentIncludingDisabled(player, "Inventory2Component") or 0
     local held_item = ComponentGetValue2(comp_inv, "mActiveItem")
     return held_item
+end
+
+local exampleshopitem = {
+    {
+        name = "Item name",
+        desc = "Item desc",
+        price = 100,
+        func = function(x, y)
+            EntityLoad("data/entities/items/pickup/chest_random.xml", x, y)
+        end,
+    },
+}
+
+function GetShopMultiplier()
+    return tonumber(GlobalsGetValue("pharmacokinetics.shopmult", "1"))
+end
+
+function SetShopMultiplier(mult)
+    GlobalsSetValue("pharmacokinetics.shopmult", tostring(mult))
+end
+
+function shop(forsale, x, y)
+    local shoptions = {}
+    local shopmult = GetShopMultiplier()
+    for i=1,#forsale do
+        local item = forsale[i]
+        table.insert(shoptions, {
+            text = item.name .. " $" .. item.price * shopmult,
+            func = function(dialog)
+                dialog.show({
+                    text = item.name .. ". " .. item.desc,
+                    options = {
+                        {
+                            text = "Buy. $" .. item.price * shopmult,
+                            func = function(dialog)
+                                if ReduceMoney(item.price * shopmult, true) then
+                                    item.func(x, y)
+                                    dialog.show({
+                                        text = "Transaction successful."
+                                    })
+                                else
+                                    dialog.show({
+                                        text = "You cannot afford this."
+                                    })
+                                end
+                            end,
+                        },
+                        {
+                            text = "Go back.",
+                            func = function(dialog)
+                                dialog.back()
+                            end,
+                        },
+                    }
+                })
+            end,
+        })
+    end
+    return shoptions
 end

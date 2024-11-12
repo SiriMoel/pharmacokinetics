@@ -1,8 +1,10 @@
+dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
+dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
 local dialog_system = dofile_once("mods/pharmacokinetics/lib/DialogSystem/dialog_system.lua")
 
-local entity_id = GetUpdatedEntityID()
-local x, y = EntityGetTransform(entity_id)
-local player = EntityGetInRadiusWithTag(x, y, 10, "player_unit")[1]
+local npc = GetUpdatedEntityID()
+local x, y = EntityGetTransform(npc)
+local player = GetPlayer()
 
 function interacting( entity_who_interacted, entity_interacted, interactable_name )
     dialog_system.open_dialog( {
@@ -15,7 +17,18 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                 text="View stock",
                 func = function(dialog)
                     dialog.show({
-                        text = "WIP!!!"
+                        text = "Okay.",
+                        options = shop({
+                            {
+                                name = "Magical liquid flask",
+                                desc = "A normal flask filled with a random magical liquid!",
+                                price = 300,
+                                func = function(x, y)
+                                    EntityLoad("", x, y)
+                                    SetShopMultiplier(GetShopMultiplier() * 1.01)
+                                end,
+                            },
+                        }),
                     })
                 end,
             },
