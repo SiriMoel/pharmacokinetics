@@ -1,6 +1,8 @@
 dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
 dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
 
+dofile_once("mods/pharmacokinetics/lib/DialogSystem/init.lua")("mods/pharmacokinetics/lib/DialogSystem")
+
 ModMaterialsFileAdd("mods/pharmacokinetics/files/materials.xml")
 
 local nxml = dofile_once("mods/pharmacokinetics/lib/nxml.lua")
