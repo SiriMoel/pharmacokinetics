@@ -62,6 +62,44 @@ function OnPlayerSpawned( player )
 
     if GameHasFlagRun("pharmacokinetics_init") then return end
 
+	-- TESTING
+	Plant("TEST PLANT", px, py, {
+		{
+			name = "1",
+			isfinal = false,
+			ttguexf = 480,
+			sprite = "mods/pharmacokinetics/files/entities/plants/testtree/1.xml",
+			offset_x = 0,
+			offset_y = 0,
+			height = 6,
+		},
+		{
+			name = "2",
+			isfinal = false,
+			ttguexf = 480,
+			sprite = "mods/pharmacokinetics/files/entities/plants/testtree/2.xml",
+			offset_x = 0,
+			offset_y = 0,
+			height = 18,
+		},
+		{
+			name = "3",
+			isfinal = true,
+			ttguexf = -1,
+			script_death = "",
+			sprite = "mods/pharmacokinetics/files/entities/plants/testtree/3.xml",
+			height = 27,
+		},
+	}, {
+		name = "Apple",
+		desc = "mmm apple",
+		sprite = "data/ui_gfx/items/gourd.png",
+		sprite_inhand = "data/items_gfx/in_hand/gourd_in_hand.png",
+		sprite_inworld = "data/items_gfx/gourd.png",
+		script_kicked = "data/scripts/items/gold_orb.lua",
+	})
+	-- END TESTING
+
     GlobalsSetValue("pharmacokinetics.amount", "0")
 	GlobalsSetValue("pharmacokinetics.shopmult", "0")
 

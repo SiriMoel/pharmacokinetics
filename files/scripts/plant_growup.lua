@@ -42,7 +42,7 @@ if doigrow == 2 then
             stage_up_to = stage_up_to + 1
         end
     
-        local plant_new = Plant(EntityGetName(plant), x, y, growthstages,{
+        local plant_new = Plant(EntityGetName(plant), x, y, growthstages, {
             name = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_name") or 0, "value_string"),
             desc = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_name") or 0, "value_string"),
             sprite = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_sprite") or 0, "value_string"),
@@ -57,9 +57,8 @@ if doigrow == 2 then
     
         if ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant_new, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage_new) .."_isfinal") or 0, "value_bool") then
             EntityAddComponent2(plant_new, "LuaComponent", {
-                script_source_file = "",
-                -- NEED FRUITING SCRIPT
-                execute_every_n_frame = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant_new, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage_new) .."_ttguexf") or 0, "value_int") * 4
+                script_source_file = "mods/pharmacokinetics/files/scripts/plant_fruit.lua",
+                execute_every_n_frame = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant_new, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage_new) .."_ttguexf") or 0, "value_int") * 6
             })
         end
     
