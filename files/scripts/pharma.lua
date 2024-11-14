@@ -51,9 +51,6 @@ function Shop(forsale, x, y)
                             func = function(dialog)
                                 if ReduceMoney(item.price * shopmult, true) then
                                     item.func(x, y)
-                                    dialog.show({
-                                        text = "Transaction successful."
-                                    })
                                 else
                                     dialog.show({
                                         text = "You cannot afford this."

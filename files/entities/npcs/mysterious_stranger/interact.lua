@@ -25,6 +25,17 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                 price = 300000,
                                 func = function(x, y)
                                     EntityLoad("mods/pharmacokinetics/files/entities/plants/shamanshrub/seed/seed.xml", x, y)
+                                    dialog.show({
+                                        text = "#Transaction successful.#",
+                                        options = {
+                                            {
+                                                text="Close",
+                                                func = function(dialog)
+                                                    dialog.close()
+                                                end,
+                                            },
+                                        },
+                                    })
                                     SetShopMultiplier(GetShopMultiplier() + 0.01)
                                 end,
                             },
@@ -33,6 +44,17 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                 desc = "Resets the item price multiplier for all shops.",
                                 price = 300000,
                                 func = function(x, y)
+                                    dialog.show({
+                                        text = "#Transaction successful.#",
+                                        options = {
+                                            {
+                                                text="Close",
+                                                func = function(dialog)
+                                                    dialog.close()
+                                                end,
+                                            },
+                                        },
+                                    })
                                     SetShopMultiplier(1)
                                 end,
                             },

@@ -25,24 +25,99 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                 price = 100,
                                 func = function(x, y)
                                     EntityLoad("mods/pharmacokinetics/files/entities/items/sormitablet/item.xml", x, y)
+                                    dialog.show({
+                                        text = "Transaction successful.",
+                                        options = {
+                                            {
+                                                text="Close",
+                                                func = function(dialog)
+                                                    dialog.close()
+                                                end,
+                                            },
+                                        },
+                                    })
                                     SetShopMultiplier(GetShopMultiplier() + 1) -- try kindness!
                                 end,
                             },
                             {
                                 name = "Mystery magical liquid flask",
-                                desc = "A normal flask filled with a random magical liquid!",
+                                desc = "A normal flask filled with a random magical liquid.",
                                 price = 300,
                                 func = function(x, y)
                                     EntityLoad("mods/pharmacokinetics/files/entities/items/potion_random_magic/item.xml", x, y)
+                                    dialog.show({
+                                        text = "Transaction successful.",
+                                        options = {
+                                            {
+                                                text="Close",
+                                                func = function(dialog)
+                                                    dialog.close()
+                                                end,
+                                            },
+                                        },
+                                    })
                                     SetShopMultiplier(GetShopMultiplier() + 0.01)
+                                end,
+                            },
+                            {
+                                name = "Translocator - a better way to consume materials!",
+                                desc = "Takes your current held material carrying item and turns it into a translocator. Kick it to consume the material contained within.",
+                                price = 250,
+                                func = function(x, y)
+                                    local helditem = HeldItem(player)
+                                    if EntityHasTag(helditem, "potion") or EntityHasTag(helditem, "powder_stash")then
+                                        local material_id = GetMaterialInventoryMainMaterial(helditem)
+                                        local amount = GetAmountOfMaterialInInventory(helditem, CellFactory_GetName(material_id))
+                                        local item = EntityLoad("mods/pharmacokinetics/files/entities/items/translocator/item.xml", x, y)
+                                        ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(item, "VariableStorageComponent", "pharma_translocator_material") or 0, "value_int", material_id)
+                                        ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(item, "VariableStorageComponent", "pharma_translocator_amount") or 0, "value_int", amount)
+                                        dialog.show({
+                                            text = "Transaction successful.",
+                                            options = {
+                                                {
+                                                    text="Close",
+                                                    func = function(dialog)
+                                                        dialog.close()
+                                                    end,
+                                                },
+                                            },
+                                        })
+                                        SetShopMultiplier(GetShopMultiplier() + 0.01)
+                                    else
+                                        dialog.show({
+                                            text = "That wasn't a material carrying item. You have not been charged.",
+                                            func = function(dialog)
+                                                AddMoney(100 * GetShopMultiplier())
+                                            end,
+                                            options = {
+                                                {
+                                                    text="Close",
+                                                    func = function(dialog)
+                                                        dialog.close()
+                                                    end,
+                                                },
+                                            },
+                                        })
+                                    end
                                 end,
                             },
                             {
                                 name = "Magical liquid flask tree seed",
                                 desc = "Grow a tree that produces magical liquid flasks!",
-                                price = 2500,
+                                price = 2000,
                                 func = function(x, y)
                                     EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", x, y)
+                                    dialog.show({
+                                        text = "Transaction successful.",
+                                        options = {
+                                            {
+                                                text="Close",
+                                                func = function(dialog)
+                                                    dialog.close()
+                                                end,
+                                            },
+                                        },
+                                    })
                                     SetShopMultiplier(GetShopMultiplier() + 0.01)
                                 end,
                             },

@@ -16,7 +16,7 @@ local fruit_x = x + math.random(-5, 5)
 local fruit_y = y - height
 
 for i=1,math.random(1,3) do
-    local fruit = EntityCreateNew("fruit")
+    local fruit = EntityCreateNew(ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_name") or 0, "value_string"))
 
     fruit_x = x + math.random(-5, 5)
 
@@ -101,6 +101,7 @@ for i=1,math.random(1,3) do
         to ability comp but idk
     ]]
     EntityAddComponent2(fruit, "LuaComponent", {
+        _tags="enabled_in_world",
         script_kicked = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_script_kicked") or 0, "value_string"),
     })
 end

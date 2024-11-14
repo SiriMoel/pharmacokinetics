@@ -10,7 +10,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
     dialog_system.open_dialog({
         name = "Shaman",
         portrait = "mods/pharmacokinetics/files/entities/npcs/shaman/portrait.png",
-        typing_sound = "three",
+        typing_sound = "two",
         text = "Hello magic one.",
         options = {
             {

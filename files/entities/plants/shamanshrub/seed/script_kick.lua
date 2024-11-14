@@ -5,11 +5,11 @@ function kick(entity_who_kicked)
     local seed = GetUpdatedEntityID()
     local x, y = EntityGetTransform(seed)
 
-    local plant = Plant("Shaman Shrub", x, y, {
+    local plant = Plant("Shaman", x, y, {
         {
 			name = "1",
 			isfinal = false,
-			ttguexf = 60,
+			ttguexf = 45,
 			sprite = "mods/pharmacokinetics/files/entities/plants/shamanshrub/1.xml",
 			offset_x = 0,
 			offset_y = 0,
@@ -18,12 +18,12 @@ function kick(entity_who_kicked)
 		{
 			name = "2",
 			isfinal = true,
-			ttguexf = 90,
+			ttguexf = 60,
 			script_death = "mods/pharmacokinetics/files/entities/plants/shamanshrub/death.lua",
 			sprite = "mods/pharmacokinetics/files/entities/plants/shamanshrub/2.xml",
             offset_x = 0,
 			offset_y = 0,
-			height = 64,
+			height = 30,
 		},
     }, {
         name = "Dried Husk",

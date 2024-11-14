@@ -62,4 +62,9 @@
 		></gun_config>
 	</AbilityComponent>
 
+	<LuaComponent
+		_tags="enabled_in_world"
+		script_kick="mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/script_kick.lua"
+	></LuaComponent>
+
 </Entity>

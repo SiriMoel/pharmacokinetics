@@ -1,4 +1,4 @@
-<Entity tags="hittable,teleportable_NOT,item_physics,item_pickup,pharma_seed" >
+<Entity tags="hittable,teleportable_NOT,item_physics,item_pickup,pharma_translocator" >
 	<Base file="data/entities/base_item_projectile.xml" />
 	
 	<PhysicsBodyComponent 
@@ -17,8 +17,8 @@
 	<PhysicsImageShapeComponent 
 		body_id="1"
 		centered="1"
-		image_file="mods/pharmacokinetics/files/entities/plants/shamanshrub/seed/sprite_inworld.png"
-		material="meat_fruit"
+		image_file="mods/pharmacokinetics/files/entities/items/translocator/sprite_inworld.png"
+		material="rock_box2d_hard"
 	></PhysicsImageShapeComponent>
 	
 	<PhysicsThrowableComponent
@@ -35,14 +35,14 @@
 		_enabled="0"
 		offset_x="4"
 		offset_y="4"
-		image_file="mods/pharmacokinetics/files/entities/plants/shamanshrub/seed/sprite_inworld.png"
+		image_file="mods/pharmacokinetics/files/entities/items/translocator/sprite_inworld.png"
 	></SpriteComponent>
 
 	<ItemComponent
 		_tags="enabled_in_world"
-		item_name="Shaman Shrub Seed"
-		ui_description="Kick to plant."
-		ui_sprite="mods/pharmacokinetics/files/entities/plants/shamanshrub/seed/sprite.png"
+		item_name="Translocator"
+		ui_description="Kick to infuse yourself with magical liquid."
+		ui_sprite="mods/pharmacokinetics/files/entities/items/translocator/sprite.png"
 		max_child_items="0"
 		is_pickable="1"
 		is_equipable_forced="1"
@@ -51,20 +51,32 @@
 
 	<UIInfoComponent
 		_tags="enabled_in_world"
-		name="Shaman Shrub Seed">
+		name="Translocator">
 	</UIInfoComponent>
 	
 	<AbilityComponent
-		ui_name="Shaman Shrub Seed"
+		ui_name="Translocator"
 		throw_as_item="1"
 		><gun_config
 			deck_capacity="0"
 		></gun_config>
 	</AbilityComponent>
+	
+	<VariableStorageComponent
+		_tags="pharma_translocator_material"
+		name="pharma_translocator_material"
+		value_int="0"
+	></VariableStorageComponent>
+
+	<VariableStorageComponent
+		_tags="pharma_translocator_amount"
+		name="pharma_translocator_amount"
+		value_int="0"
+	></VariableStorageComponent>
 
 	<LuaComponent
 		_tags="enabled_in_world"
-		script_kick="mods/pharmacokinetics/files/entities/plants/shamanshrub/seed/script_kick.lua"
+		script_kick="mods/pharmacokinetics/files/entities/items/translocator/script_kick.lua"
 	></LuaComponent>
 
 </Entity>
