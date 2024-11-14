@@ -63,7 +63,8 @@ function OnPlayerSpawned( player )
     if GameHasFlagRun("pharmacokinetics_init") then return end
 
 	-- TESTING
-	Plant("TEST PLANT", px, py, {
+	EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", px, py)
+	--[[Plant("TEST PLANT", px, py, {
 		{
 			name = "1",
 			isfinal = false,
@@ -86,7 +87,7 @@ function OnPlayerSpawned( player )
 			name = "3",
 			isfinal = true,
 			ttguexf = -1,
-			script_death = "",
+			script_death = "mods/pharmacokinetics/files/entities/plants/testtree/death.lua",
 			sprite = "mods/pharmacokinetics/files/entities/plants/testtree/3.xml",
 			height = 27,
 		},
@@ -97,7 +98,7 @@ function OnPlayerSpawned( player )
 		sprite_inhand = "data/items_gfx/in_hand/gourd_in_hand.png",
 		sprite_inworld = "data/items_gfx/gourd.png",
 		script_kicked = "data/scripts/items/gold_orb.lua",
-	})
+	})]]
 	-- END TESTING
 
     GlobalsSetValue("pharmacokinetics.amount", "0")

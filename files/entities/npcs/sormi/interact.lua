@@ -7,7 +7,7 @@ local x, y = EntityGetTransform(npc)
 local player = GetPlayer()
 
 function interacting( entity_who_interacted, entity_interacted, interactable_name )
-    dialog_system.open_dialog( {
+    dialog_system.open_dialog({
         name = "Sormi",
         portrait = "mods/pharmacokinetics/files/entities/npcs/sormi/portrait.png",
         typing_sound = "two",
@@ -19,18 +19,24 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                     dialog.show({
                         text = "Okay.",
                         options = Shop({
-                            -- mystery magical liquid flask
                             {
                                 name = "Mystery magical liquid flask",
                                 desc = "A normal flask filled with a random magical liquid!",
                                 price = 300,
                                 func = function(x, y)
                                     EntityLoad("mods/pharmacokinetics/files/entities/items/potion_random_magic/item.xml", x, y)
-                                    SetShopMultiplier(GetShopMultiplier() * 1.01)
+                                    SetShopMultiplier(GetShopMultiplier() + 0.01)
                                 end,
                             },
-                            -- impressionable seed (grow plant)
-                            -- 
+                            {
+                                name = "Magical liquid flask tree seed",
+                                desc = "Grow a tree that produces magical liquid flasks!",
+                                price = 2500,
+                                func = function(x, y)
+                                    EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", x, y)
+                                    SetShopMultiplier(GetShopMultiplier() + 0.01)
+                                end,
+                            },
                         }),
                     })
                 end,
@@ -42,5 +48,5 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                 end,
             },
         },
-    } )
+    })
 end

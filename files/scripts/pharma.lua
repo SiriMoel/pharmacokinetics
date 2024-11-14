@@ -107,6 +107,8 @@ local example_fruit = {
 function Plant(name, x, y, growthstages, fruit) -- run this when a seed is planted
     local plant = EntityCreateNew(name) -- should be no name,
     EntitySetTransform(plant, x, y)
+    EntityAddTag(plant, "hittable")
+    EntityAddTag(plant, "pharma_plant")
     EntityAddComponent2(plant, "SpriteComponent", {
         image_file = growthstages[1].path,
         offset_x = growthstages[1].offset_x,

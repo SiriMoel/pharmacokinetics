@@ -22,6 +22,12 @@ for i=1,math.random(1,3) do
 
     EntitySetTransform(fruit, fruit_x, fruit_y)
 
+    EntityAddTag(fruit, "hittable")
+    EntityAddTag(fruit, "pharma_fruit")
+    EntityAddTag(fruit, "teleportable_NOT")
+    EntityAddTag(fruit, "item_physics")
+    EntityAddTag(fruit, "item_pickup")
+
     EntityAddComponent2(plant, "UIInfoComponent", {
         name = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_name") or 0, "value_string")
     })
@@ -86,13 +92,13 @@ for i=1,math.random(1,3) do
         ui_name = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_name") or 0, "value_string"),
         throw_as_item = true,
     })
-    --[[ may need to add:
+    --[[ may need to add
 
         ><gun_config
 			deck_capacity="0"
 		></gun_config>
 
-        to ability comp idk
+        to ability comp but idk
     ]]
     EntityAddComponent2(fruit, "LuaComponent", {
         script_kicked = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_script_kicked") or 0, "value_string"),

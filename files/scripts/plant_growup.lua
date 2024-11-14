@@ -19,7 +19,6 @@ if doigrow == 2 then
     -- if the plant isnt meant to grow nor die
     if ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .."_ttguexf") or 0, "value_int") == -1 then
     
-
     -- if the plant is on its final stage (kill it)
     elseif ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .."_isfinal") or 0, "value_bool") then
         dofile_once(ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .."_script_death") or 0, "value_string") or "")
