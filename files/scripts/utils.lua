@@ -117,3 +117,16 @@ function HeldItem(player)
     local held_item = ComponentGetValue2(comp_inv, "mActiveItem")
     return held_item
 end
+
+-- this doesnt work for the one thing i wanted it to work for :(
+function WaitFrames(entity, frames)
+	local frame_now      = GameGetFrameNum()
+	local last_execution = ComponentGetValueInt( GetUpdatedComponentID(),  "mLastExecutionFrame" )
+	if last_execution == nil then
+		return false
+	end
+	if last_execution > -1 and (frame_now - last_execution) < frames then
+		return true
+	end
+	return false
+end

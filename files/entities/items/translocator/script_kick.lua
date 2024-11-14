@@ -15,8 +15,7 @@ function kick(entity_who_kicked)
 
 		EntityAddTag(player, "pharma_immune")
 		EntityIngestMaterial(player, material, amount)
-		wait(2)
-		--EntityRemoveIngestionStatusEffect(player, "PHARMACOKINETICS_MAGIC_LIQUID_INGESTED")
+		EntityRemoveIngestionStatusEffect(player, "PHARMACOKINETICS_MAGIC_LIQUID_INGESTED")
 		EntityRemoveTag(player, "pharma_immune")
 
 		IncreasePharmaBarAmount(math.ceil(2 * (amount / 200)))
