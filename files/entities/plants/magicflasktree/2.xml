@@ -1,7 +1,7 @@
 <Sprite
  filename="mods/pharmacokinetics/files/entities/plants/magicflasktree/2.png"
  offset_x="32"
- offset_y="175" 
+ offset_y="178" 
  default_animation="stand" >
 
  <RectAnimation

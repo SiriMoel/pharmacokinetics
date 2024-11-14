@@ -41,7 +41,7 @@
 	<ItemComponent
 		_tags="enabled_in_world"
 		item_name="Translocator"
-		ui_description="Kick to infuse yourself with magical liquid."
+		ui_description="Hold and kick to infuse yourself with "
 		ui_sprite="mods/pharmacokinetics/files/entities/items/translocator/sprite.png"
 		max_child_items="0"
 		is_pickable="1"

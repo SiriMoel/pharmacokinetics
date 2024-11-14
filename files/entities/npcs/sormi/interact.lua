@@ -44,7 +44,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                 desc = "A normal flask filled with a random magical liquid.",
                                 price = 300,
                                 func = function(x, y)
-                                    EntityLoad("mods/pharmacokinetics/files/entities/items/potion_random_magic/item.xml", x, y)
+                                    EntityLoad("mods/pharmacokinetics/files/entities/items/potion_random_magical/item.xml", x, y)
                                     dialog.show({
                                         text = "Transaction successful.",
                                         options = {
@@ -60,8 +60,8 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                 end,
                             },
                             {
-                                name = "Translocator - a better way to consume materials!",
-                                desc = "Takes your current held material carrying item and turns it into a translocator. Kick it to consume the material contained within.",
+                                name = "Translocator: A better way to consume materials!",
+                                desc = "Takes your current held material carrying item and turns it \ninto a translocator. \nKick it to consume the material contained within.",
                                 price = 250,
                                 func = function(x, y)
                                     local helditem = HeldItem(player)
@@ -69,6 +69,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                         local material_id = GetMaterialInventoryMainMaterial(helditem)
                                         local amount = GetAmountOfMaterialInInventory(helditem, CellFactory_GetName(material_id))
                                         local item = EntityLoad("mods/pharmacokinetics/files/entities/items/translocator/item.xml", x, y)
+                                        ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(item, "ItemComponent") or 0, "ui_description", ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(item, "ItemComponent") or 0, "ui_description") .. GameTextGetTranslatedOrNot("$mat_" .. CellFactory_GetName(material_id)) .. ".")
                                         ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(item, "VariableStorageComponent", "pharma_translocator_material") or 0, "value_int", material_id)
                                         ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(item, "VariableStorageComponent", "pharma_translocator_amount") or 0, "value_int", amount)
                                         dialog.show({
@@ -83,6 +84,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                             },
                                         })
                                         SetShopMultiplier(GetShopMultiplier() + 0.01)
+                                        GameKillInventoryItem(player, helditem)
                                     else
                                         dialog.show({
                                             text = "That wasn't a material carrying item. You have not been charged.",

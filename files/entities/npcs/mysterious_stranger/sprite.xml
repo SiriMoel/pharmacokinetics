@@ -10,8 +10,8 @@
   pos_x="0"
   pos_y="0"
   frame_count="6"
-  frame_width="20"
-  frame_height="21"
+  frame_width="16"
+  frame_height="19"
   frame_wait="0.2"
   frames_per_row="6"
   loop="1"   >

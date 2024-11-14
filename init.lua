@@ -48,7 +48,7 @@ local function add_scene(table)
 end
 
 local scenes = {
-	{ 0, -200, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", false }, -- NOT FINAL POSITION
+	{ 716, -89 - 6, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", false }, -- NOT FINAL POSITION
 	{ 0, -150, "mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", false }, -- NOT FINAL POSITION
 	{ 0, -100, "mods/pharmacokinetics/files/entities/npcs/shaman/npc.xml", false }, -- NOT FINAL POSITION
 }
@@ -66,7 +66,7 @@ function OnPlayerSpawned( player )
 
 	-- TESTING (also see pixel scenes, there may be some testing things there)
 
-	EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", px, py)
+	--EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", px, py)
 
 	-- END TESTING
 
