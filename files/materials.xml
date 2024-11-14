@@ -3,7 +3,7 @@
 	<CellData
 		name="pharma_pharmadust"
 		ui_name="Pharmadust"
-  		tags="[sand_ground],[corrodible],[alchemy],[food]"
+  		tags="[sand_ground],[corrodible],[alchemy],[food],[pharma_pharmadust]"
 		burnable="0"
 		density="6"
 		durability="9"
@@ -34,7 +34,7 @@
 	<CellData
 		name="pharma_aq_pharmadust"
 		ui_name="Aqueous Pharmadust"
-	  	tags="[liquid],[water],[corrodible],[freezable],[alchemy]"
+	  	tags="[liquid],[water],[corrodible],[alchemy],[pharma_pharmadust]"
 		burnable="0"
 		density="5"
 		cell_type="liquid"
@@ -52,7 +52,6 @@
 		liquid_sprite_stains_check_offset="-1"
 		warmth_melts_to_material="steam"
 		warmth_melts_chance_rev="500"
-		cold_freezes_to_material="ice_static"
 		>
 		<Graphics
 			texture_file="mods/pharmacokinetics/files/materials_gfx/aq_pharmadust.png"
@@ -65,6 +64,36 @@
 			</Stains>
 			<Ingestion>
 				<StatusEffect type="PHARMACOKINETICS_REDUCE_PHARMABAR_SMALL" amount="1" />
+			</Ingestion>
+		</StatusEffects>
+  	</CellData>
+
+	<CellData
+		name="pharma_w"
+		ui_name="W"
+	  	tags="[liquid],[blood],[corrodible],[alchemy],[magic_liquid],[impure]"
+		burnable="0"
+		density="5.1"
+		cell_type="liquid"
+		generates_smoke="0"
+		liquid_gravity="1.0"
+		liquid_sand="0"
+		liquid_stains="2"
+		on_fire="0"
+		requires_oxygen="1"
+		temperature_of_fire="10"
+		>
+		<Graphics
+			texture_file="mods/pharmacokinetics/files/materials_gfx/w.png"
+			color="A0BEC639"
+			>
+		</Graphics>
+		<StatusEffects>
+			<Stains>
+				<StatusEffect type="WET" />
+			</Stains>
+			<Ingestion>
+				<StatusEffect type="PHARMACOKINETICS_W" amount="0.5" />
 			</Ingestion>
 		</StatusEffects>
   	</CellData>
@@ -82,6 +111,16 @@
 	<Reaction probability="100"
 		input_cell1="radioactive_liquid" input_cell2="bone"
 		output_cell1="pharma_pharmadust" output_cell2="pharma_pharmadust" >
+  	</Reaction>
+
+	<Reaction probability="12"
+		input_cell1="pharma_aq_pharmadust" 	input_cell2="radioactive_liquid"
+		output_cell1="pharma_aq_pharmadust" 	output_cell2="water" >
+  	</Reaction>
+
+	<Reaction probability="60"
+		input_cell1="blood_worm" input_cell2="[pharma_pharmadust]"
+		output_cell1="pharma_w" output_cell2="pharma_w" >
   	</Reaction>
 
 </Materials>

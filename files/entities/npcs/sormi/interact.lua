@@ -46,7 +46,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                     SetShopMultiplier(GetShopMultiplier() + 0.01)
                                 end,
                             },
-                        }),
+                        }, x, y),
                     })
                 end,
             },

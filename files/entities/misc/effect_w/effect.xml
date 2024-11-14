@@ -1,0 +1,20 @@
+<Entity>
+	
+	<InheritTransformComponent>
+    </InheritTransformComponent>	
+    
+    <GameEffectComponent 
+        effect="PHARMACOKINETICS_W"
+        frames="600"
+    >
+	</GameEffectComponent>
+
+    <DrugEffectModifierComponent>
+		<fx_add
+			color_amount="-1.0"
+			nightvision_amount="3.0"
+            fractals_amount="1.0"
+		/>
+	</DrugEffectModifierComponent>
+
+</Entity>

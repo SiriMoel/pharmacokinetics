@@ -5,9 +5,12 @@ dofile_once("mods/pharmacokinetics/lib/DialogSystem/init.lua")("mods/pharmacokin
 
 ModMaterialsFileAdd("mods/pharmacokinetics/files/materials.xml")
 
-local nxml = dofile_once("mods/pharmacokinetics/lib/nxml.lua")
+-- set & append
+ModLuaFileAppend( "data/scripts/status_effects/status_list.lua", "mods/pharmacokinetics/files/status_list.lua" )
 
 -- nxml
+local nxml = dofile_once("mods/pharmacokinetics/lib/nxml.lua")
+
 local materials = ModTextFileGetContent("data/materials.xml")
 local xml = nxml.parse(materials)
 for element in xml:each_child() do
@@ -22,9 +25,6 @@ for element in xml:each_child() do
     end
 end
 ModTextFileSetContent("data/materials.xml", tostring(xml))
-
--- set & append
-ModLuaFileAppend( "data/scripts/status_effects/status_list.lua", "mods/pharmacokinetics/files/status_list.lua" )
 
 -- pixel scenes (thanks graham)
 local function add_scene(table)
@@ -48,7 +48,9 @@ local function add_scene(table)
 end
 
 local scenes = {
-	{ 0, -200, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", true },
+	{ 0, -200, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", false }, -- NOT FINAL POSITION
+	{ 0, -150, "mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", false }, -- NOT FINAL POSITION
+	{ 0, -100, "mods/pharmacokinetics/files/entities/npcs/shaman/npc.xml", false }, -- NOT FINAL POSITION
 }
 
 add_scene(scenes)
@@ -62,51 +64,18 @@ function OnPlayerSpawned( player )
 
     if GameHasFlagRun("pharmacokinetics_init") then return end
 
-	-- TESTING
+	-- TESTING (also see pixel scenes, there may be some testing things there)
+
 	EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", px, py)
-	--[[Plant("TEST PLANT", px, py, {
-		{
-			name = "1",
-			isfinal = false,
-			ttguexf = 480,
-			sprite = "mods/pharmacokinetics/files/entities/plants/testtree/1.xml",
-			offset_x = 0,
-			offset_y = 0,
-			height = 6,
-		},
-		{
-			name = "2",
-			isfinal = false,
-			ttguexf = 480,
-			sprite = "mods/pharmacokinetics/files/entities/plants/testtree/2.xml",
-			offset_x = 0,
-			offset_y = 0,
-			height = 18,
-		},
-		{
-			name = "3",
-			isfinal = true,
-			ttguexf = -1,
-			script_death = "mods/pharmacokinetics/files/entities/plants/testtree/death.lua",
-			sprite = "mods/pharmacokinetics/files/entities/plants/testtree/3.xml",
-			height = 27,
-		},
-	}, {
-		name = "Apple",
-		desc = "mmm apple",
-		sprite = "data/ui_gfx/items/gourd.png",
-		sprite_inhand = "data/items_gfx/in_hand/gourd_in_hand.png",
-		sprite_inworld = "data/items_gfx/gourd.png",
-		script_kicked = "data/scripts/items/gold_orb.lua",
-	})]]
+
 	-- END TESTING
 
     GlobalsSetValue("pharmacokinetics.amount", "0")
-	GlobalsSetValue("pharmacokinetics.shopmult", "0")
+	GlobalsSetValue("pharmacokinetics.shopmult", "1")
 
     EntityAddComponent2(player, "LuaComponent", {
 		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",
-		execute_every_n_frame=50,
+		execute_every_n_frame=60,
 	})
 
     GameAddFlagRun("pharmacokinetics_init")

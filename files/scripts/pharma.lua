@@ -72,6 +72,12 @@ function Shop(forsale, x, y)
             end,
         })
     end
+    table.insert(shoptions, {
+        text="Close",
+        func = function(dialog)
+            dialog.close()
+        end,
+    })
     return shoptions
 end
 
