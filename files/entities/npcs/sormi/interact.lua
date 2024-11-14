@@ -20,6 +20,15 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                         text = "Okay.",
                         options = Shop({
                             {
+                                name = "Alchemy Guide",
+                                desc = "Contains some hints about the world around us.",
+                                price = 100,
+                                func = function(x, y)
+                                    EntityLoad("mods/pharmacokinetics/files/entities/items/sormitablet/item.xml", x, y)
+                                    SetShopMultiplier(GetShopMultiplier() + 1) -- try kindness!
+                                end,
+                            },
+                            {
                                 name = "Mystery magical liquid flask",
                                 desc = "A normal flask filled with a random magical liquid!",
                                 price = 300,
