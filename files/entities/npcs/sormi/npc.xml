@@ -3,7 +3,7 @@
     <SpriteComponent 
 		image_file="mods/pharmacokinetics/files/entities/npcs/sormi/sprite.xml" 
 		offset_x="0"
-		offset_y="0">
+		offset_y="0" >
 	</SpriteComponent>
 
     <InteractableComponent
@@ -18,5 +18,12 @@
         execute_every_n_frame="1"
         enable_coroutines="1" >
     </LuaComponent>
+
+    <!--<SimplePhysicsComponent 
+        can_go_up="0"
+        >
+    </SimplePhysicsComponent >
+    
+    <VelocityComponent />-->
 
 </Entity>

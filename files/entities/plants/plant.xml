@@ -2,10 +2,11 @@
 
     <!-- moldos -->
 
-    <!--<SpriteComponent
-        image_file="mods/pharmacokinetics/files/entities/plants/magicflasktree/1.xml"
-        offset_x="0"
-        offset_y="0"
-    ><SpriteComponent>-->
+    <SimplePhysicsComponent 
+        can_go_up="0"
+        >
+    </SimplePhysicsComponent >
+    
+    <VelocityComponent />
 
 </Entity>

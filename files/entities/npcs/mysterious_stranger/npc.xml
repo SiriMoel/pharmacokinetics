@@ -19,4 +19,11 @@
         enable_coroutines="1" >
     </LuaComponent>
 
+    <!--<SimplePhysicsComponent 
+        can_go_up="0"
+        >
+    </SimplePhysicsComponent >
+    
+    <VelocityComponent />-->
+
 </Entity>

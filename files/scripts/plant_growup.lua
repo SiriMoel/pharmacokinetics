@@ -7,7 +7,7 @@ local x, y = EntityGetTransform(plant)
 math.randomseed(x + GameGetFrameNum(), y + GameGetFrameNum())
 
 local doigrow = math.random(1,9) -- unsure what this should be
-GamePrint(tostring(doigrow))
+--GamePrint(tostring(doigrow))
 
 if doigrow == 2 then
     Plant_GrowUp(plant, x, y)
