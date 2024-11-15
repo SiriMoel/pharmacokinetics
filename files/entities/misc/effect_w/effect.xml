@@ -14,7 +14,8 @@
 			color_amount="0.3"
 			nightvision_amount="3.0"
             fractals_amount="0.3"
-            doublevision_amount="0.5"
+            fractals_size="0.1"
+            doublevision_amount="5.0"
 		/>
 	</DrugEffectModifierComponent>
 
