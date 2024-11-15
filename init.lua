@@ -68,9 +68,8 @@ local function add_scene(table)
 end
 
 local scenes = {
-	{ 716, -89 - 6, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", false }, -- NOT FINAL POSITION
-	{ 0, -150, "mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", false }, -- NOT FINAL POSITION
-	{ 0, -100, "mods/pharmacokinetics/files/entities/npcs/shaman/npc.xml", false }, -- NOT FINAL POSITION
+	{ 10060, -1201 - 6, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", false },
+	{ -15949, -6396, "mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", false },
 }
 
 add_scene(scenes)

@@ -20,8 +20,8 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                         text = "#Yes.#",
                         options = Shop({
                             {
-                                name = "???",
-                                desc = "???",
+                                name = "Shaman Seed",
+                                desc = "It hums a whimsical tune...",
                                 price = 300000,
                                 func = function(x, y)
                                     EntityLoad("mods/pharmacokinetics/files/entities/plants/shamanshrub/seed/seed.xml", x, y)
@@ -41,7 +41,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                             },
                             {
                                 name = "Reset shop price multiplier",
-                                desc = "Resets the item price multiplier for all shops.",
+                                desc = "Resets the price multiplier for all shops.",
                                 price = 300000,
                                 func = function(x, y)
                                     dialog.show({

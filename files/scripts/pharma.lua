@@ -99,15 +99,6 @@ local example_growthstages = {
     },
 }
 
---[[local example_fruit = {
-    name = "Apple",
-    desc = "mmm apple",
-    sprite = "path",
-    sprite_inhand = "path",
-    sprite_inworld = "path",
-    script_kicked = "path.lua",
-}]]
-
 function Plant(name, x, y, growthstages, fruit, stageupto, final) -- run this when a seed is planted
     local plant = EntityLoad("mods/pharmacokinetics/files/entities/plants/plant.xml", x, y)
     if stageupto == nil or stageupto == 0 then
@@ -206,11 +197,13 @@ function Plant(name, x, y, growthstages, fruit, stageupto, final) -- run this wh
             })
         end
     end
-    EntityAddComponent2(plant, "VariableStorageComponent", {
-        _tags = "pharmaplant_fruit_path",
-        name = "pharmaplant_fruit_path",
-        value_string = fruit,
-    })
+    if fruit ~= nil then
+        EntityAddComponent2(plant, "VariableStorageComponent", {
+            _tags = "pharmaplant_fruit_path",
+            name = "pharmaplant_fruit_path",
+            value_string = fruit,
+        })
+    end
     if final then
         EntityAddTag(plant, "pharma_plant_final")
         EntityAddComponent2(plant, "LuaComponent", {
