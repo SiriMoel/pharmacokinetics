@@ -23,7 +23,7 @@ mod_settings = {
 	{
         id = "pharmabar_at_soulsgui",
         ui_name = "Pharmabar at Souls GUI location",
-        ui_description = "Determines the location of this mod's bar.",
+        ui_description = "Determines the location of this mod's bar. Bar will also be larger at Souls GUI location.",
         value_default = false,
         scope = MOD_SETTING_SCOPE_RUNTIME,
     },

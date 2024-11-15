@@ -7,7 +7,7 @@ local frame = GameGetFrameNum()
 
 math.randomseed(frame, frame)
 
-local amount = math.random(1,15)
+local amount = math.random(10,20)
 
 if GetPharmaBarAmount() - amount > 0 then
     IncreasePharmaBarAmount(amount * -1)

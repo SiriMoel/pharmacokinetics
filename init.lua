@@ -11,20 +11,40 @@ ModLuaFileAppend( "data/scripts/status_effects/status_list.lua", "mods/pharmacok
 -- nxml
 local nxml = dofile_once("mods/pharmacokinetics/lib/nxml.lua")
 
-local materials = ModTextFileGetContent("data/materials.xml")
+local materials_files = ModMaterialFilesGet() -- this function does NOT work how its meant to
+for i,file in ipairs(materials_files) do
+	local materials = ModTextFileGetContent(file)
+	local xml = nxml.parse(materials)
+	for element in xml:each_child() do
+	    if element.attr.tags ~= nil and string.find(element.attr.tags, "[^%a]magic_liquid[^%a]") then
+        	for child in element:each_of("StatusEffects") do
+	            for childdos in child:each_of("Ingestion") do
+                	childdos:add_child(nxml.parse([[
+	                    <StatusEffect type="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED" amount="1" />
+                	]]))
+            	end
+        	end
+    	end
+	end
+	ModTextFileSetContent(file, tostring(xml))
+end
+
+--[[local materials = ModTextFileGetContent("data/materials.xml")
 local xml = nxml.parse(materials)
 for element in xml:each_child() do
     if element.attr.tags ~= nil and string.find(element.attr.tags, "[^%a]magic_liquid[^%a]") then
-        for child in element:each_of("StatusEffects") do
+       	for child in element:each_of("StatusEffects") do
             for childdos in child:each_of("Ingestion") do
-                childdos:add_child(nxml.parse([[
+               	childdos:add_child(nxml.parse([[
                     <StatusEffect type="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED" amount="1" />
-                ]]))
-            end
-        end
-    end
+               	))
+           	end
+       	end
+   	end
 end
-ModTextFileSetContent("data/materials.xml", tostring(xml))
+ModTextFileSetContent("data/materials.xml", tostring(xml))]]
+
+
 
 -- pixel scenes (thanks graham)
 local function add_scene(table)
@@ -64,7 +84,12 @@ function OnPlayerSpawned( player )
 
     if GameHasFlagRun("pharmacokinetics_init") then return end
 
+
 	-- TESTING (also see pixel scenes, there may be some testing things there)
+
+	--[[for i,v in ipairs(materials_files) do
+		print("pharmacokinetics - found materials file:  " .. v)
+	end]]
 
 	--EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", px, py)
 

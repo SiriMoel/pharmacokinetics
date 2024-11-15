@@ -82,6 +82,7 @@
 		on_fire="0"
 		requires_oxygen="1"
 		temperature_of_fire="10"
+		wang_color="A0BEC639"
 		>
 		<Graphics
 			texture_file="mods/pharmacokinetics/files/materials_gfx/w.png"
@@ -93,7 +94,8 @@
 				<StatusEffect type="WET" />
 			</Stains>
 			<Ingestion>
-				<StatusEffect type="PHARMACOKINETICS_W" amount="0.5" />
+				<StatusEffect type="PHARMACOKINETICS_W" amount="0.2" />
+				<StatusEffect type="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED" amount="1" />
 			</Ingestion>
 		</StatusEffects>
   	</CellData>
