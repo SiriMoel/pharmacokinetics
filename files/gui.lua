@@ -29,13 +29,23 @@ end
 
 function GuiRender()
     local gui = GuiCreate()
+
+    local x = 0
+    local y = 0
+
+    if ModSettingGet("pharmacokinetics.pharmabar_at_soulsgui") then
+        x = 72
+        y = 90
+    end
+
     GuiStartFrame(gui)
 
-    GuiLayoutBeginVertical(gui, 72, 90)
+    GuiImageNinePiece(gui, gui_id, x, y, 45 * (barvalue * 0.01), 6, 1, "mods/pharmacokinetics/files/gui/bar.png")
+    GuiZSetForNextWidget(gui, 1000 + 2)
+    GuiImageNinePiece(gui, gui_id, x, y, 45, 6, 1, "mods/pharmacokinetics/files/gui/bar_bg.png")
+
+    --GuiLayoutBeginVertical(gui, 72, 90)
         --GuiText(gui, 0, 0, tostring(baramount) .. " / 500")
         --GuiProgressBar(gui, 0, 0, 1000000, barvalue, 15, 2, "mods/pharmacokinetics/files/gui/bar.png")
-        GuiImageNinePiece(gui, gui_id, 455, 320, 45 * (barvalue * 0.01), 6, 1, "mods/pharmacokinetics/files/gui/bar.png")
-        GuiZSetForNextWidget(gui, 1000 + 2)
-        GuiImageNinePiece(gui, gui_id, 455, 320, 45, 6, 1, "mods/pharmacokinetics/files/gui/bar_bg.png")
-    GuiLayoutEnd(gui)
+    --GuiLayoutEnd(gui)
 end

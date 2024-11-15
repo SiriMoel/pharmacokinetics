@@ -1,5 +1,6 @@
 dofile_once("data/scripts/lib/mod_settings.lua")
-dofile_once("data/scripts/lib/utilities.lua")
+dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
+dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
 
 function mod_setting_bool_custom( mod_id, gui, in_main_menu, im_id, setting )
 	local value = ModSettingGetNextValue( mod_setting_get_id(mod_id,setting) )
@@ -16,10 +17,16 @@ function mod_setting_change_callback( mod_id, gui, in_main_menu, setting, old_va
 	print( tostring(new_value) )
 end
 
-local mod_id = "divinelink"
+local mod_id = "pharmacokinetics"
 mod_settings_version = 1
 mod_settings = {
-    
+	{
+        id = "pharmabar_at_soulsgui",
+        ui_name = "Pharmabar at Souls GUI location",
+        ui_description = "Determines the location of this mod's bar.",
+        value_default = false,
+        scope = MOD_SETTING_SCOPE_RUNTIME,
+    },
 }
 
 function ModSettingsUpdate( init_scope )
