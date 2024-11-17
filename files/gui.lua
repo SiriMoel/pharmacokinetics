@@ -34,11 +34,8 @@ function GuiRender()
 
     local screen_width,screen_height = GuiGetScreenDimensions(gui)
 
-    -- this isnt consistent across resolutions wtf nolla
-    local x = 559
+    local x = screen_width - 81
     local y = 43
-    --x = screen_width - (0.972 * (screen_width / 9))
-    --y = screen_height - (2.7 * (screen_height / 3) )
 
     local height = 1
     local width = 40
