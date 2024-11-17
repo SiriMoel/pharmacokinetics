@@ -16,6 +16,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
             {
                 text="View stock",
                 func = function(dialog)
+                    --GlobalsSetValue("pharmacokinetics.shopamount", tostring(1))
                     dialog.show({
                         text = "Okay.",
                         options = Shop({

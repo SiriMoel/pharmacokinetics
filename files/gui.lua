@@ -30,8 +30,16 @@ end
 function GuiRender()
     local gui = GuiCreate()
 
+    GuiStartFrame(gui)
+
+    local screen_width,screen_height = GuiGetScreenDimensions(gui)
+
+    -- this isnt consistent across resolutions wtf nolla
     local x = 559
     local y = 43
+    --x = screen_width - (0.972 * (screen_width / 9))
+    --y = screen_height - (2.7 * (screen_height / 3) )
+
     local height = 1
     local width = 40
 
@@ -42,8 +50,6 @@ function GuiRender()
         width = 45
     end
 
-    GuiStartFrame(gui)
-
     GuiImageNinePiece(gui, gui_id, x, y, width * (barvalue * 0.01), height, 1, "mods/pharmacokinetics/files/gui/bar.png")
     GuiZSetForNextWidget(gui, 1000 + 2)
     GuiImageNinePiece(gui, gui_id, x, y, width, height, 1, "mods/pharmacokinetics/files/gui/bar_bg.png")
@@ -52,4 +58,6 @@ function GuiRender()
         --GuiText(gui, 0, 0, tostring(baramount) .. " / 500")
         --GuiProgressBar(gui, 0, 0, 1000000, barvalue, 15, 2, "mods/pharmacokinetics/files/gui/bar.png")
     --GuiLayoutEnd(gui)
+
+    GuiDestroy(gui)
 end

@@ -59,7 +59,90 @@ function Shop(forsale, x, y)
                             end,
                         },
                         {
-                            text = "Go back.",
+                            text = "Go back",
+                            func = function(dialog)
+                                dialog.back()
+                            end,
+                        },
+                    }
+                })
+            end,
+        })
+    end
+    table.insert(shoptions, {
+        text="Close",
+        func = function(dialog)
+            dialog.close()
+        end,
+    })
+    return shoptions
+end
+
+function Shop2(forsale, x, y) -- Shop() with support for buying specific amounts, currently wip
+    local shoptions = {}
+    local shopmult = GetShopMultiplier()
+    for i=1,#forsale do
+        local item = forsale[i]
+        table.insert(shoptions, {
+            text = item.name .. " $" .. item.price * shopmult,
+            func = function(dialog)
+                amount = tonumber(GlobalsGetValue("pharmacokinetics.shopamount", "1"))
+                dialog.show({
+                    text = item.name .. ". \n" .. item.desc,
+                    options = {
+                        {
+                            text = "Buy. " .. tonumber(GlobalsGetValue("pharmacokinetics.shopamount", "1")) .. "x $" .. (item.price * shopmult) * tonumber(GlobalsGetValue("pharmacokinetics.shopamount", "1")),
+                            func = function(dialog)
+                                if ReduceMoney((item.price * shopmult) * tonumber(GlobalsGetValue("pharmacokinetics.shopamount", "1")), true) then
+                                    for i=1,tonumber(GlobalsGetValue("pharmacokinetics.shopamount", "1")) do
+                                        item.func(x, y)
+                                        y = y - 1
+                                    end
+                                else
+                                    dialog.show({
+                                        text = "You cannot afford this."
+                                    })
+                                end
+                            end,
+                        },
+                        {
+                            text = "Increase amount. (Currently: " .. tonumber(GlobalsGetValue("pharmacokinetics.shopamount", "1")) .. ")",
+                            func = function(dialog)
+                                GlobalsSetValue("pharmacokinetics.shopamount", tostring(tonumber(GlobalsGetValue("pharmacokinetics.shopamount", "1")) + 1))
+                                dialog.show({
+                                    text = "Amount increased!",
+                                    options = {
+                                        {
+                                            text = "Go back",
+                                            func = function(dialog)
+                                                dialog.back()
+                                            end,
+                                        },
+                                    },
+                                })
+                            end,
+                        },
+                        {
+                            text = "Decrease amount. (Currently: " .. tonumber(GlobalsGetValue("pharmacokinetics.shopamount", "1")) .. ")",
+                            func = function(dialog)
+                                if amount > 1 then
+                                    GlobalsSetValue("pharmacokinetics.shopamount", tostring(tonumber(GlobalsGetValue("pharmacokinetics.shopamount", "1")) - 1))
+                                end
+                                dialog.show({
+                                    text = "Amount decreased!",
+                                    options = {
+                                        {
+                                            text = "Go back",
+                                            func = function(dialog)
+                                                dialog.back()
+                                            end,
+                                        },
+                                    },
+                                })
+                            end,
+                        },
+                        {
+                            text = "Go back",
                             func = function(dialog)
                                 dialog.back()
                             end,

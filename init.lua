@@ -91,6 +91,7 @@ function OnPlayerSpawned( player )
 	end]]
 
 	--EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", px, py)
+	--EntityLoad("mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", px, py)
 
 	-- END TESTING
 
