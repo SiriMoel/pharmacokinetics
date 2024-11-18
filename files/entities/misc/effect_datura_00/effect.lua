@@ -1,6 +1,12 @@
 dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
 dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
 
+--[[
+
+all of the numbers need tweaking, including the effect amount in materials.xml (possibly steal apoth numbers)
+
+]]
+
 local effect = GetUpdatedEntityID()
 local player = GetPlayer()
 local stomach = EntityGetFirstComponent(player, "StatusEffectDataComponent")
@@ -21,44 +27,30 @@ if datura_num == nil then return end
 
 local amount_consumed = ComponentGetValue2(stomach, "ingestion_effects")[datura_num]
 
-local howhigh = 0
+local howhigh = tonumber(GlobalsGetValue("pharmacokinetics.datura_howhigh", "0"))
 
 local frame = GameGetFrameNum()
 local last_frame = tonumber(GlobalsGetValue("pharmacokinetics.datura_dream_frame", "0"))
 
-if amount_consumed >= 800 then
-    howhigh = math.min(howhigh + 1, 800)
-    --GamePrint("8")
+if howhigh > 2000 then
+    howhigh = 2000
 
-elseif amount_consumed >= 400 then
-    howhigh = math.min(howhigh + 1, 400)
-    --GameAddFlagRun("pharmacokinetics.datura_dreaming")
-    --GamePrint("7")
+elseif amount_consumed >= 300 then
+    howhigh = howhigh + 1
+    GameAddFlagRun("pharmacokinetics.datura_dreaming")
 
-elseif amount_consumed >= 250 then
-    howhigh = math.min(howhigh + 1, 250)
-    --GamePrint("6")
+elseif amount_consumed >= 200 then
+    howhigh = math.min(howhigh + 1, 1500)
 
 elseif amount_consumed >= 100 then
-    howhigh = math.min(howhigh + 1, 100)
-    --GameRemoveFlagRun("pharmacokinetics.datura_dreaming")
-    --GamePrint("5")
-
-elseif amount_consumed >= 50 then
-    howhigh = math.min(howhigh + 1, 50)
-    --GamePrint("4")
-
-elseif amount_consumed >= 30 then
-    howhigh = math.min(howhigh + 1, 30)
-    --GamePrint("3")
+    howhigh = math.min(howhigh + 1, 750)
 
 elseif amount_consumed >= 1 then
-    howhigh = math.min(howhigh + 1, 10)
-    --GamePrint("2")
+    howhigh = math.min(howhigh + 1, 250)
 
 else
     howhigh = math.floor(howhigh * 0.95)
-    --GamePrint("1")
+    GameRemoveFlagRun("pharmacokinetics.datura_dreaming")
 end
 
 if GameHasFlagRun("pharmacokinetics.datura_dreaming") then
@@ -67,4 +59,6 @@ if GameHasFlagRun("pharmacokinetics.datura_dreaming") then
     end
 end
 
---GameSetPostFxParameter() -- SHADER TIME!!!
+GlobalsSetValue("pharmacokinetics.datura_howhigh", tostring(howhigh))
+
+GameSetPostFxParameter("pharma_datura_effect_amount", math.min(1, howhigh / 2000), 1, 0, 0) -- SHADER TIME!!!

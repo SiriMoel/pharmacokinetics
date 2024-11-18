@@ -1,7 +1,9 @@
 dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
 dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
 
+-- libs
 dofile_once("mods/pharmacokinetics/lib/DialogSystem/init.lua")("mods/pharmacokinetics/lib/DialogSystem")
+dofile_once("mods/pharmacokinetics/lib/injection.lua")
 
 ModMaterialsFileAdd("mods/pharmacokinetics/files/materials.xml")
 
@@ -44,8 +46,6 @@ for element in xml:each_child() do
 end
 ModTextFileSetContent("data/materials.xml", tostring(xml))]]
 
-
-
 -- pixel scenes (thanks graham)
 local function add_scene(table)
 	local biome_path = ModIsEnabled("noitavania") and "mods/noitavania/data/biome/_pixel_scenes.xml" or "data/biome/_pixel_scenes.xml"
@@ -74,6 +74,13 @@ local scenes = {
 
 add_scene(scenes)
 
+-- shaders (ty nathan)
+inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "// liquid distortion", "mods/pharmacokinetics/files/shaders/datura_pre.frag")
+inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "gl_FragColor", "mods/pharmacokinetics/files/shaders/datura_post.frag")
+inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "varying vec2 tex_coord_fogofwar;", "mods/pharmacokinetics/files/shaders/datura_global.frag")
+
+GameSetPostFxParameter("pharma_datura_effect_amount", 0, 0, 0, 0)
+
 -- player
 function OnPlayerSpawned( player )
 
@@ -83,12 +90,13 @@ function OnPlayerSpawned( player )
 
     if GameHasFlagRun("pharmacokinetics_init") then return end
 
-
 	-- TESTING (also see pixel scenes, there may be some testing things there)
 
 	--[[for i,v in ipairs(materials_files) do
 		print("pharmacokinetics - found materials file:  " .. v)
 	end]]
+
+	--print(ModTextFileGetContent("data/shaders/post_final.frag"))
 
 	--EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", px, py)
 	--EntityLoad("mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", px, py)
@@ -99,6 +107,7 @@ function OnPlayerSpawned( player )
 	GlobalsSetValue("pharmacokinetics.shopmult", "1")
 	GlobalsSetValue("pharmacokinetics.daturatripping", "-1")
 	GlobalsSetValue("pharmacokinetics.datura_dream_frame", "0")
+	GlobalsSetValue("pharmacokinetics.datura_howhigh", "0")
 
     EntityAddComponent2(player, "LuaComponent", {
 		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",

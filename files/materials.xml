@@ -126,7 +126,7 @@
     </Graphics>
 	<StatusEffects>
 		<Ingestion>
-			<StatusEffect type="PHARMACOKINETICS_DATURA" amount="0.3" />
+			<StatusEffect type="PHARMACOKINETICS_DATURA" amount="0.2" />
 		</Ingestion>
 	</StatusEffects>
   </CellData>

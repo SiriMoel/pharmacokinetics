@@ -10,11 +10,11 @@
     >
 	</GameEffectComponent>
 
-    <DrugEffectModifierComponent>
+    <!--<DrugEffectModifierComponent>
 		<fx_add
 			nightvision_amount="0.1"
 		/>
-	</DrugEffectModifierComponent>
+	</DrugEffectModifierComponent>-->
 
 	<LuaComponent
 		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_datura_00/effect.lua"
