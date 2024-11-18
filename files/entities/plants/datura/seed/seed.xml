@@ -1,0 +1,70 @@
+<Entity tags="hittable,teleportable_NOT,item_physics,item_pickup,pharma_seed" >
+	<Base file="data/entities/base_item_projectile.xml" />
+	
+	<PhysicsBodyComponent 
+		_tags="enabled_in_world"
+		uid="1" 
+		allow_sleep="1" 
+		angular_damping="0" 
+		fixed_rotation="0" 
+		is_bullet="1" 
+		linear_damping="0"
+		auto_clean="0"
+		on_death_leave_physics_body="1"
+		hax_fix_going_through_ground="1"
+	></PhysicsBodyComponent>
+	
+	<PhysicsImageShapeComponent 
+		body_id="1"
+		centered="1"
+		image_file="mods/pharmacokinetics/files/entities/plants/datura/seed/sprite_inworld.png"
+		material="meat_fruit"
+	></PhysicsImageShapeComponent>
+	
+	<PhysicsThrowableComponent
+		max_throw_speed="180"
+		throw_force_coeff="1.5"
+	></PhysicsThrowableComponent>
+
+	<VelocityComponent
+		_tags="enabled_in_world"
+	></VelocityComponent>
+
+	<SpriteComponent
+		_tags="enabled_in_hand"
+		_enabled="0"
+		offset_x="4"
+		offset_y="4"
+		image_file="mods/pharmacokinetics/files/entities/plants/datura/seed/sprite_inworld.png"
+	></SpriteComponent>
+
+	<ItemComponent
+		_tags="enabled_in_world"
+		item_name="Datura Seed"
+		ui_description="Kick to plant."
+		ui_sprite="mods/pharmacokinetics/files/entities/plants/datura/seed/sprite.png"
+		max_child_items="0"
+		is_pickable="1"
+		is_equipable_forced="1"
+		preferred_inventory="QUICK"
+	></ItemComponent>
+
+	<UIInfoComponent
+		_tags="enabled_in_world"
+		name="Datura Seed">
+	</UIInfoComponent>
+	
+	<AbilityComponent
+		ui_name="Datura Seed"
+		throw_as_item="1"
+		><gun_config
+			deck_capacity="0"
+		></gun_config>
+	</AbilityComponent>
+
+	<LuaComponent
+		_tags="enabled_in_world"
+		script_kick="mods/pharmacokinetics/files/entities/plants/datura/seed/script_kick.lua"
+	></LuaComponent>
+
+</Entity>

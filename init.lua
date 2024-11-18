@@ -97,11 +97,16 @@ function OnPlayerSpawned( player )
 
     GlobalsSetValue("pharmacokinetics.amount", "0")
 	GlobalsSetValue("pharmacokinetics.shopmult", "1")
+	GlobalsSetValue("pharmacokinetics.daturatripping", "-1")
 
     EntityAddComponent2(player, "LuaComponent", {
 		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",
 		execute_every_n_frame=60,
 	})
+
+	EntityAddComponent(player, "LuaComponent", {
+        script_damage_about_to_be_received="mods/pharmacokinetics/files/scripts/player_damage_handler.lua"
+    })
 
     GameAddFlagRun("pharmacokinetics_init")
 end

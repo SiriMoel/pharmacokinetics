@@ -100,6 +100,39 @@
 		</StatusEffects>
   	</CellData>
 
+	<CellData 
+	name="pharma_daturadust"  
+	ui_name="Datura Dust"
+  	tags="[corrodible],[burnable],[alchemy],[impure]"
+	burnable="1"  
+	density="6"  
+	cell_type="liquid" 
+	wang_color="ff"  
+	generates_smoke="20"  
+	liquid_gravity="1.0"  
+	liquid_sand="1"  
+	on_fire="0"  
+	requires_oxygen="1"  
+	temperature_of_fire="50" 
+	autoignition_temperature="85" 
+	platform_type="0"
+	hp="200" 
+	fire_hp="100"
+	audio_physics_material_wall="organicsoft"
+	audio_physics_material_solid="organicsoft"
+	show_in_creative_mode="1"
+	> 
+    <Graphics
+		texture_file="mods/pharmacokinetics/files/materials_gfx/daturadust.png"
+		color="ff4D462C" >
+    </Graphics>
+	<StatusEffects>
+		<Ingestion>
+			<StatusEffect type="PHARMACOKINETICS_DATURA" amount="0.3" />
+		</Ingestion>
+	</StatusEffects>
+  </CellData>
+
 	<Reaction probability="20"
 		input_cell1="[fire]" input_cell2="pharma_aq_pharmadust"
 		output_cell1="[fire]" output_cell2="steam" output_cell3="pharma_pharmadust" >

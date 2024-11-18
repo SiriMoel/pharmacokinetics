@@ -23,6 +23,37 @@ local to_insert = {
 		ui_icon="mods/pharmacokinetics/files/status_indicators/w.png",
 		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_w/effect.xml",
 	},
+	{
+		id="PHARMACOKINETICS_DATURA",
+		ui_name="Feeling shamanic...",
+		ui_description="You feel a bit strange...",
+		ui_icon="mods/pharmacokinetics/files/status_indicators/datura.png",
+		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_datura_00/effect.xml",
+	},
+	{
+		id="PHARMACOKINETICS_DATURA",
+		ui_name="Feeling shamanic...",
+		ui_description="I think we can handle this...",
+		ui_icon="mods/pharmacokinetics/files/status_indicators/datura.png",
+		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_datura_01/effect.xml",
+		min_threshold_normalized=0.5,
+	},
+	{
+		id="PHARMACOKINETICS_DATURA",
+		ui_name="Feeling shamanic...",
+		ui_description="That shadow looks a bit off...",
+		ui_icon="mods/pharmacokinetics/files/status_indicators/datura.png",
+		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_datura_02/effect.xml",
+		min_threshold_normalized=1.5,
+	},
+	{
+		id="PHARMACOKINETICS_DATURA",
+		ui_name="Feeling shamanic...",
+		ui_description="I AM THE WAY THE TRUTH AND THE LIFE.",
+		ui_icon="mods/pharmacokinetics/files/status_indicators/datura.png",
+		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_datura_03/effect.xml",
+		min_threshold_normalized=3,
+	},
 }
 
 for i,v in ipairs(to_insert) do

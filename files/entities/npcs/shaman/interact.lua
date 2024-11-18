@@ -16,11 +16,54 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
             {
                 text="View stock",
                 func = function(dialog)
+                    local shoptions = {
+                        {
+                            name = "Datura Seed",
+                            desc = "A mystical and dangerous plant.",
+                            price = 10000,
+                            func = function(x, y)
+                                EntityLoad("mods/pharmacokinetics/files/entities/plants/datura/seed/seed.xml", x, y)
+                                dialog.show({
+                                    text = "Transaction successful.",
+                                    options = {
+                                        {
+                                            text="Close",
+                                            func = function(dialog)
+                                                dialog.close()
+                                            end,
+                                        },
+                                    },
+                                })
+                                SetShopMultiplier(GetShopMultiplier() + 0.01)
+                            end,
+                        },
+                    }
+                    if ModIsEnabled("forsdel") then
+                        table.insert(shoptions, 
+                        {
+                            name = "Crossgourd Seed",
+                            desc = "This truly is a forsaken delicacy.",
+                            price = 5000,
+                            func = function(x, y)
+                                EntityLoad("mods/forsdel/files/corssgourd_seed.xml", x, y)
+                                dialog.show({
+                                    text = "Transaction successful.",
+                                    options = {
+                                        {
+                                            text="Close",
+                                            func = function(dialog)
+                                                dialog.close()
+                                            end,
+                                        },
+                                    },
+                                })
+                                SetShopMultiplier(GetShopMultiplier() + 0.01)
+                            end,
+                        })
+                    end
                     dialog.show({
                         text = "Yes.",
-                        options = Shop({
-
-                        }, x, y),
+                        options = Shop(shoptions, x, y),
                     })
                 end,
             },
