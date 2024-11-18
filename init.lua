@@ -98,6 +98,7 @@ function OnPlayerSpawned( player )
     GlobalsSetValue("pharmacokinetics.amount", "0")
 	GlobalsSetValue("pharmacokinetics.shopmult", "1")
 	GlobalsSetValue("pharmacokinetics.daturatripping", "-1")
+	GlobalsSetValue("pharmacokinetics.datura_dream_frame", "0")
 
     EntityAddComponent2(player, "LuaComponent", {
 		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",
