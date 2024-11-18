@@ -10,9 +10,15 @@
     >
 	</GameEffectComponent>
 
+	<GameEffectComponent 
+    	effect="MOVEMENT_SLOWER"
+    	frames="600"
+    >
+	</GameEffectComponent >
+
     <DrugEffectModifierComponent>
 		<fx_add
-			nightvision_amount="0.3"
+			nightvision_amount="1"
 		/>
 	</DrugEffectModifierComponent>
 

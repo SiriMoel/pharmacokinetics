@@ -40,7 +40,7 @@
 
 	<ItemComponent
 		_tags="enabled_in_world"
-		item_name="Shaman Shrub Seed"
+		item_name="Shaman Seed"
 		ui_description="Kick to plant."
 		ui_sprite="mods/pharmacokinetics/files/entities/plants/shamanshrub/seed/sprite.png"
 		max_child_items="0"
@@ -51,11 +51,11 @@
 
 	<UIInfoComponent
 		_tags="enabled_in_world"
-		name="Shaman Shrub Seed">
+		name="Shaman Seed">
 	</UIInfoComponent>
 	
 	<AbilityComponent
-		ui_name="Shaman Shrub Seed"
+		ui_name="Shaman Seed"
 		throw_as_item="1"
 		><gun_config
 			deck_capacity="0"

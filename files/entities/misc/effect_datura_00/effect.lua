@@ -26,31 +26,39 @@ local howhigh = 0
 local frame = GameGetFrameNum()
 local last_frame = tonumber(GlobalsGetValue("pharmacokinetics.datura_dream_frame", "0"))
 
-if amount_consumed >= 1000 then
-    howhigh = math.min(howhigh + 1, 1000)
+if amount_consumed >= 800 then
+    howhigh = math.min(howhigh + 1, 800)
+    --GamePrint("8")
 
-elseif amount_consumed >= 500 then
-    howhigh = math.min(howhigh + 1, 500)
+elseif amount_consumed >= 400 then
+    howhigh = math.min(howhigh + 1, 400)
     --GameAddFlagRun("pharmacokinetics.datura_dreaming")
+    --GamePrint("7")
 
 elseif amount_consumed >= 250 then
     howhigh = math.min(howhigh + 1, 250)
+    --GamePrint("6")
 
 elseif amount_consumed >= 100 then
     howhigh = math.min(howhigh + 1, 100)
     --GameRemoveFlagRun("pharmacokinetics.datura_dreaming")
+    --GamePrint("5")
 
 elseif amount_consumed >= 50 then
     howhigh = math.min(howhigh + 1, 50)
+    --GamePrint("4")
 
 elseif amount_consumed >= 30 then
     howhigh = math.min(howhigh + 1, 30)
+    --GamePrint("3")
 
 elseif amount_consumed >= 1 then
     howhigh = math.min(howhigh + 1, 10)
+    --GamePrint("2")
 
 else
     howhigh = math.floor(howhigh * 0.95)
+    --GamePrint("1")
 end
 
 if GameHasFlagRun("pharmacokinetics.datura_dreaming") then
@@ -60,21 +68,3 @@ if GameHasFlagRun("pharmacokinetics.datura_dreaming") then
 end
 
 --GameSetPostFxParameter() -- SHADER TIME!!!
-
---[[
-WHAT DO I WANT TO HAPPEN (accurate to high dose datura?)
-
-- 00
-take less damage
-
-- 01
-cannot recharge mana
-
-- 02
-shadowy shadows
-
-- 03
-"dream-like sequences"
-more intense visuals
-
-]]

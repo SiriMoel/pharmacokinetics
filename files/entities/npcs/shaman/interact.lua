@@ -45,7 +45,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                             desc = "This truly is a forsaken delicacy.",
                             price = 5000,
                             func = function(x, y)
-                                EntityLoad("mods/forsdel/files/corssgourd_seed.xml", x, y)
+                                EntityLoad("mods/forsdel/files/crossgourd_seed.xml", x, y)
                                 dialog.show({
                                     text = "Transaction successful.",
                                     options = {

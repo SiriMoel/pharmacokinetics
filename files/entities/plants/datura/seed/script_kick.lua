@@ -26,7 +26,7 @@ function kick(entity_who_kicked)
 			sprite = "mods/pharmacokinetics/files/entities/plants/datura/2.xml",
 			offset_x = 0,
 			offset_y = 0,
-			height = 32,
+			height = 24,
 		},
 		{
 			name = "3",
@@ -36,7 +36,7 @@ function kick(entity_who_kicked)
 			sprite = "mods/pharmacokinetics/files/entities/plants/datura/3.xml",
             offset_x = 0,
 			offset_y = 0,
-			height = 64,
+			height = 44,
 		},
     }, "mods/pharmacokinetics/files/entities/plants/datura/fruit/fruit.xml")
 
