@@ -1,7 +1,7 @@
 <Entity tags="hittable,pharma_fruit,teleportable_NOT,item_physics,item_pickup">
 
 	<UIInfoComponent
-		name="Thornapple"
+		name="$item_moldos_daturafruit"
 	></UIInfoComponent>
 
 	<PhysicsBodyComponent 
@@ -48,8 +48,8 @@
 		is_equipable_forced="1"
 		ui_sprite="mods/pharmacokinetics/files/entities/plants/datura/fruit/sprite.png"
 		preferred_inventory="QUICK"
-		item_name="Thornapple"
-		ui_description="Do not eat."
+		item_name="$item_moldos_daturafruit"
+		ui_description="$itemdesc_moldos_daturafruit"
 	></ItemComponent>
   
 	<SpriteComponent
@@ -69,7 +69,7 @@
 	</HitboxComponent>
 	
 	<AbilityComponent
-		ui_name="Thornapple"
+		ui_name="$item_moldos_daturafruit"
 		throw_as_item="1"
 		><gun_config
 			deck_capacity="0"

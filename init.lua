@@ -75,9 +75,9 @@ local scenes = {
 add_scene(scenes)
 
 -- shaders (ty nathan)
-inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "// liquid distortion", "mods/pharmacokinetics/files/shaders/datura_pre.frag")
-inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "gl_FragColor", "mods/pharmacokinetics/files/shaders/datura_post.frag")
-inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "varying vec2 tex_coord_fogofwar;", "mods/pharmacokinetics/files/shaders/datura_global.frag")
+inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "// liquid distortion", "mods/pharmacokinetics/files/shaders/pre.frag")
+inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "gl_FragColor", "mods/pharmacokinetics/files/shaders/post.frag")
+inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "varying vec2 tex_coord_fogofwar;", "mods/pharmacokinetics/files/shaders/global.frag")
 
 GameSetPostFxParameter("pharma_datura_effect_amount", 0, 0, 0, 0)
 

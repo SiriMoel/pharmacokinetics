@@ -32,21 +32,12 @@ local howhigh = tonumber(GlobalsGetValue("pharmacokinetics.datura_howhigh", "0")
 local frame = GameGetFrameNum()
 local last_frame = tonumber(GlobalsGetValue("pharmacokinetics.datura_dream_frame", "0"))
 
-if howhigh > 2000 then
+if howhigh >= 2000 then
     howhigh = 2000
-
-elseif amount_consumed >= 300 then
-    howhigh = howhigh + 1
     GameAddFlagRun("pharmacokinetics.datura_dreaming")
 
-elseif amount_consumed >= 200 then
-    howhigh = math.min(howhigh + 1, 1500)
-
-elseif amount_consumed >= 100 then
-    howhigh = math.min(howhigh + 1, 750)
-
 elseif amount_consumed >= 1 then
-    howhigh = math.min(howhigh + 1, 250)
+    howhigh = math.min(howhigh + 1, 2000)
 
 else
     howhigh = math.floor(howhigh * 0.95)

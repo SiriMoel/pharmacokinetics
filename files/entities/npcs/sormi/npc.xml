@@ -1,4 +1,4 @@
-<Entity name="Sormi" tags="hittable">
+<Entity name="$npc_moldos_sormi" tags="hittable">
 
     <SpriteComponent 
 		image_file="mods/pharmacokinetics/files/entities/npcs/sormi/sprite.xml" 
@@ -9,7 +9,7 @@
     <InteractableComponent
         radius="10"
         ui_text="[INTERACT]"
-        name="Sormi" >
+        name="$npc_moldos_sormi" >
     </InteractableComponent>
 
     <LuaComponent

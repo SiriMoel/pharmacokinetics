@@ -70,7 +70,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                         local material_id = GetMaterialInventoryMainMaterial(helditem)
                                         local amount = GetAmountOfMaterialInInventory(helditem, CellFactory_GetName(material_id))
                                         local item = EntityLoad("mods/pharmacokinetics/files/entities/items/translocator/item.xml", x, y)
-                                        ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(item, "ItemComponent") or 0, "ui_description", ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(item, "ItemComponent") or 0, "ui_description") .. GameTextGetTranslatedOrNot("$mat_" .. CellFactory_GetName(material_id)) .. ".")
+                                        ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(item, "ItemComponent") or 0, "ui_description", GameTextGetTranslatedOrNot(ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(item, "ItemComponent") or 0, "ui_description")) .. GameTextGetTranslatedOrNot("$mat_" .. CellFactory_GetName(material_id)) .. ".")
                                         ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(item, "VariableStorageComponent", "pharma_translocator_material") or 0, "value_int", material_id)
                                         ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(item, "VariableStorageComponent", "pharma_translocator_amount") or 0, "value_int", amount)
                                         dialog.show({

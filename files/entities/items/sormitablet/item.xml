@@ -1,18 +1,18 @@
 <Entity tags="tablet,normal_tablet">
 	<Base file="data/entities/items/books/base_book.xml">
 		<UIInfoComponent
-			name="Emerald Tablet of Moldos"
+			name="$item_moldos_sormitablet"
 			>
 		</UIInfoComponent>
 		
 		<ItemComponent
-			item_name="Emerald Tablet of Moldos"
-			ui_description="Thou shall pour toxic sludge over bone dust and then dissolve it in water and then pour it into other things for alchemy purposes."
+			item_name="$item_moldos_sormitablet"
+			ui_description="$itemdesc_moldos_sormitablet"
 			>
 		</ItemComponent>
 		
 		<AbilityComponent
-			ui_name="Emerald Tablet of Moldos"
+			ui_name="$item_moldos_sormitablet"
 			>
 		</AbilityComponent>
 	</Base>

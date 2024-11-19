@@ -1,4 +1,4 @@
-<Entity name="???" tags="hittable">
+<Entity name="$npc_moldos_mysteriousstranger" tags="hittable">
 
     <SpriteComponent 
 		image_file="mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/sprite.xml" 
@@ -9,7 +9,7 @@
     <InteractableComponent
         radius="10"
         ui_text="[INTERACT]"
-        name="???" >
+        name="$npc_moldos_mysteriousstranger" >
     </InteractableComponent>
 
     <LuaComponent

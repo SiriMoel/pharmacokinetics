@@ -1,7 +1,7 @@
 <Entity tags="hittable,pharma_fruit,teleportable_NOT,item_physics,item_pickup">
 
 	<UIInfoComponent
-		name="Suspicious Fruit"
+		name="$item_moldos_mftfruit"
 	></UIInfoComponent>
 
 	<PhysicsBodyComponent 
@@ -48,8 +48,8 @@
 		is_equipable_forced="1"
 		ui_sprite="mods/pharmacokinetics/files/entities/plants/magicflasktree/fruit/sprite.png"
 		preferred_inventory="QUICK"
-		item_name="Suspicious Fruit"
-		ui_description="Something is enclosed within..."
+		item_name="$item_moldos_mftfruit"
+		ui_description="$itemdesc_moldos_mftfruit"
 	></ItemComponent>
   
 	<SpriteComponent
@@ -69,7 +69,7 @@
 	</HitboxComponent>
 	
 	<AbilityComponent
-		ui_name="Suspicious Fruit"
+		ui_name="$item_moldos_mftfruit"
 		throw_as_item="1"
 		><gun_config
 			deck_capacity="0"

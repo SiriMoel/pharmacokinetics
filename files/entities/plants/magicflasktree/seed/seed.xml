@@ -40,8 +40,8 @@
 
 	<ItemComponent
 		_tags="enabled_in_world"
-		item_name="Magic Flask Tree Seed"
-		ui_description="Kick to plant."
+		item_name="$item_moldos_mftseed"
+		ui_description="$itemdesc_moldos_mftseed"
 		ui_sprite="mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/sprite.png"
 		max_child_items="0"
 		is_pickable="1"
@@ -51,11 +51,11 @@
 
 	<UIInfoComponent
 		_tags="enabled_in_world"
-		name="Magic Flask Tree Seed">
+		name="$item_moldos_mftseed">
 	</UIInfoComponent>
 	
 	<AbilityComponent
-		ui_name="Magic Flask Tree Seed"
+		ui_name="$item_moldos_mftseed"
 		throw_as_item="1"
 		><gun_config
 			deck_capacity="0"

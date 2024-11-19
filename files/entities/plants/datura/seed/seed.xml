@@ -40,8 +40,8 @@
 
 	<ItemComponent
 		_tags="enabled_in_world"
-		item_name="Datura Seed"
-		ui_description="Kick to plant."
+		item_name="$item_moldos_daturaseed"
+		ui_description="$itemdesc_moldos_daturaseed"
 		ui_sprite="mods/pharmacokinetics/files/entities/plants/datura/seed/sprite.png"
 		max_child_items="0"
 		is_pickable="1"
@@ -51,11 +51,11 @@
 
 	<UIInfoComponent
 		_tags="enabled_in_world"
-		name="Datura Seed">
+		name="$item_moldos_daturaseed">
 	</UIInfoComponent>
 	
 	<AbilityComponent
-		ui_name="Datura Seed"
+		ui_name="$item_moldos_daturaseed"
 		throw_as_item="1"
 		><gun_config
 			deck_capacity="0"

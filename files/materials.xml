@@ -2,7 +2,7 @@
 
 	<CellData
 		name="pharma_pharmadust"
-		ui_name="Pharmadust"
+		ui_name="$mat_moldos_pharmadust"
   		tags="[sand_ground],[corrodible],[alchemy],[food],[pharma_pharmadust]"
 		burnable="0"
 		density="6"
@@ -33,7 +33,7 @@
 
 	<CellData
 		name="pharma_aq_pharmadust"
-		ui_name="Aqueous Pharmadust"
+		ui_name="$mat_moldos_aq_pharmadust"
 	  	tags="[liquid],[water],[corrodible],[alchemy],[pharma_pharmadust]"
 		burnable="0"
 		density="5"
@@ -70,7 +70,7 @@
 
 	<CellData
 		name="pharma_w"
-		ui_name="W"
+		ui_name="$mat_moldos_w"
 	  	tags="[liquid],[blood],[corrodible],[alchemy],[magic_liquid],[impure]"
 		burnable="0"
 		density="5.1"
@@ -102,7 +102,7 @@
 
 	<CellData 
 	name="pharma_daturadust"  
-	ui_name="Datura Dust"
+	ui_name="$mat_moldos_datura"
   	tags="[corrodible],[burnable],[alchemy],[impure]"
 	burnable="1"  
 	density="6"  
@@ -126,7 +126,7 @@
     </Graphics>
 	<StatusEffects>
 		<Ingestion>
-			<StatusEffect type="PHARMACOKINETICS_DATURA" amount="0.2" />
+			<StatusEffect type="PHARMACOKINETICS_DATURA" amount="0.05" />
 		</Ingestion>
 	</StatusEffects>
   </CellData>
