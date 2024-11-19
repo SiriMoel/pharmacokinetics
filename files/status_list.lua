@@ -54,6 +54,20 @@ local to_insert = {
 		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_datura_03/effect.xml",
 		min_threshold_normalized=2.5,
 	},
+	{
+		id="PHARMACOKINETICS_PHARMADUST",
+		ui_name="$status_moldos_pharmadust",
+		ui_description="$statusdesc_moldos_pharmadust",
+		ui_icon="mods/pharmacokinetics/files/status_indicators/pharmadust.png",
+		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_pharmadust/effect.xml",
+	},
+	{
+		id="PHARMACOKINETICS_WIZARDDUST",
+		ui_name="$status_moldos_wizarddust",
+		ui_description="$statusdesc_moldos_wizarddust",
+		ui_icon="mods/pharmacokinetics/files/status_indicators/wizarddust.png",
+		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_wizarddust/effect.xml",
+	},
 }
 
 for i,v in ipairs(to_insert) do

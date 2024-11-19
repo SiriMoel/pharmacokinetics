@@ -80,6 +80,7 @@ inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "gl_FragC
 inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "varying vec2 tex_coord_fogofwar;", "mods/pharmacokinetics/files/shaders/global.frag")
 
 GameSetPostFxParameter("pharma_datura_effect_amount", 0, 0, 0, 0)
+GameSetPostFxParameter("pharma_pharmadust_effect_amount", 0, 0, 0, 0)
 
 -- player
 function OnPlayerSpawned( player )
@@ -108,6 +109,8 @@ function OnPlayerSpawned( player )
 	GlobalsSetValue("pharmacokinetics.daturatripping", "-1")
 	GlobalsSetValue("pharmacokinetics.datura_dream_frame", "0")
 	GlobalsSetValue("pharmacokinetics.datura_howhigh", "0")
+	GlobalsSetValue("pharmacokinetics.pharmadust_howhigh", "0")
+	GlobalsSetValue("pharmacokinetics.wizarddust_howhigh", "0")
 
     EntityAddComponent2(player, "LuaComponent", {
 		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",
@@ -122,16 +125,14 @@ function OnPlayerSpawned( player )
 end
 
 --translations
-local translations = ModTextFileGetContent( "data/translations/common.csv" );
+local translations = ModTextFileGetContent( "data/translations/common.csv" )
 if translations ~= nil then
     while translations:find("\r\n\r\n") do
-        translations = translations:gsub("\r\n\r\n","\r\n");
+        translations = translations:gsub("\r\n\r\n","\r\n")
     end
-
-    local new_translations = ModTextFileGetContent( table.concat({"mods/pharmacokinetics/files/translations.csv"}) );
-    translations = translations .. new_translations;
-
-    ModTextFileSetContent( "data/translations/common.csv", translations );
+    local new_translations = ModTextFileGetContent(table.concat({"mods/pharmacokinetics/files/translations.csv"}))
+    translations = translations .. new_translations
+    ModTextFileSetContent( "data/translations/common.csv", translations )
 end
 
 function OnModSettingsChanged()

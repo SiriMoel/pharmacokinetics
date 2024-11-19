@@ -1,0 +1,17 @@
+<Entity>
+	
+	<InheritTransformComponent>
+    </InheritTransformComponent>	
+    
+    <GameEffectComponent
+        effect="PHARMACOKINETICS_PHARMADUST"
+        frames="600"
+    >
+	</GameEffectComponent>
+
+	<LuaComponent
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_pharmadust/effect.lua"
+		execute_every_n_frame="1"
+	></LuaComponent>
+
+</Entity>

@@ -1,0 +1,35 @@
+<Entity>
+	
+	<InheritTransformComponent>
+    </InheritTransformComponent>	
+    
+    <GameEffectComponent
+        effect="PHARMACOKINETICS_WIZARDDUST"
+        frames="600"
+    >
+	</GameEffectComponent>
+
+	<GameEffectComponent
+        effect="BERSERK"
+        frames="600"
+    >
+	</GameEffectComponent>
+
+	<GameEffectComponent
+        effect="MOVEMENT_FASTER"
+        frames="600"
+    >
+	</GameEffectComponent>
+
+	<GameEffectComponent
+        effect="LEVITATION_FASTER"
+        frames="600"
+    >
+	</GameEffectComponent>
+
+	<LuaComponent
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_wizarddust/effect.lua"
+		execute_every_n_frame="1"
+	></LuaComponent>
+
+</Entity>

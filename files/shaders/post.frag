@@ -10,7 +10,13 @@ color.r -= (0.2 * pharma_datura_effect_amount.x);
 color.g -= (0.4 * pharma_datura_effect_amount.x);
 color.b -= (0.2 * pharma_datura_effect_amount.x);
 
-// testing monochrome (probably wont feature, i like my purple)
-/*vec3 pharma_color_hsv = pharma_rgb2hsv(color);
-pharma_color_hsv.s = 0;
-color = pharma_hsv2rgb(pharma_color_hsv);*/
+// pharmadust
+vec3 pharma_color_hsv = pharma_rgb2hsv(color);
+pharma_color_hsv.x -= (0.5 * pharma_pharmadust_effect_amount.x);
+pharma_color_hsv.y -= (0.65 * pharma_pharmadust_effect_amount.x);
+color = pharma_hsv2rgb(pharma_color_hsv);
+
+// wizarddust
+pharma_color_hsv.y += (0.5 * pharma_wizarddust_effect_amount.x);
+pharma_color_hsv.z += (0.1 * pharma_wizarddust_effect_amount.x);
+color = pharma_hsv2rgb(pharma_color_hsv);

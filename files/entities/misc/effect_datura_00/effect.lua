@@ -1,18 +1,12 @@
 dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
 dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
 
---[[
-
-all of the numbers need tweaking, including the effect amount in materials.xml (possibly steal apoth numbers)
-
-]]
-
 local effect = GetUpdatedEntityID()
 local player = GetPlayer()
 local stomach = EntityGetFirstComponent(player, "StatusEffectDataComponent")
 local x, y = EntityGetTransform(player)
 
--- adapted from apoth code, trying to work out how shaders work
+-- adapted from apoth code
 
 if stomach == nil then return end
 

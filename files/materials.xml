@@ -26,6 +26,7 @@
     	</Graphics>
 		<StatusEffects>
 			<Ingestion>
+				<StatusEffect type="PHARMACOKINETICS_PHARMADUST" amount="0.2" />
 				<StatusEffect type="PHARMACOKINETICS_REDUCE_PHARMABAR_SMALL" amount="1" />
 			</Ingestion>
 		</StatusEffects>
@@ -63,6 +64,7 @@
 				<StatusEffect type="WET" />
 			</Stains>
 			<Ingestion>
+				<StatusEffect type="PHARMACOKINETICS_PHARMADUST" amount="0.1" />
 				<StatusEffect type="PHARMACOKINETICS_REDUCE_PHARMABAR_SMALL" amount="1" />
 			</Ingestion>
 		</StatusEffects>
@@ -101,25 +103,25 @@
   	</CellData>
 
 	<CellData 
-	name="pharma_daturadust"  
-	ui_name="$mat_moldos_datura"
-  	tags="[corrodible],[burnable],[alchemy],[impure]"
-	burnable="1"  
-	density="6"  
-	cell_type="liquid" 
-	wang_color="ff4D462C"  
-	generates_smoke="20"  
-	liquid_gravity="1.0"  
-	liquid_sand="1"  
-	on_fire="0"  
-	requires_oxygen="1"  
-	temperature_of_fire="50" 
-	autoignition_temperature="85" 
-	hp="200" 
-	fire_hp="100"
-	audio_physics_material_wall="organicsoft"
-	audio_physics_material_solid="organicsoft"
-	> 
+		name="pharma_daturadust"  
+		ui_name="$mat_moldos_datura"
+  		tags="[corrodible],[burnable],[alchemy],[impure]"
+		burnable="1"  
+		density="6"  
+		cell_type="liquid" 
+		wang_color="ff4D462C"  
+		generates_smoke="20"  
+		liquid_gravity="1.0"  
+		liquid_sand="1"  
+		on_fire="0"  
+		requires_oxygen="1"  
+		temperature_of_fire="50" 
+		autoignition_temperature="85" 
+		hp="200" 
+		fire_hp="100"
+		audio_physics_material_wall="organicsoft"
+		audio_physics_material_solid="organicsoft"
+		> 
     <Graphics
 		texture_file="mods/pharmacokinetics/files/materials_gfx/daturadust.png"
 		color="ff4D462C" >
@@ -130,6 +132,37 @@
 		</Ingestion>
 	</StatusEffects>
   </CellData>
+
+  	<CellData
+		name="pharma_wizarddust"
+		ui_name="$mat_moldos_wizarddust"
+  		tags="[sand_ground],[corrodible],[alchemy],[food],"
+		burnable="0"
+		density="6"
+		durability="9"
+		cell_type="liquid"
+		wang_color="ffDA8078"
+		generates_smoke="0"
+		liquid_gravity="1.2"
+		liquid_sand="1"
+		on_fire="0"
+		requires_oxygen="1"
+		temperature_of_fire="10"
+		hp="10000" 
+		audio_physics_material_event="sand"
+		audio_physics_material_wall="sand"
+		audio_physics_material_solid="bone"
+		>
+    	<Graphics
+			texture_file="mods/pharmacokinetics/files/materials_gfx/wizarddust.png"
+			color="ffDA8078" >
+    	</Graphics>
+		<StatusEffects>
+			<Ingestion>
+				<StatusEffect type="PHARMACOKINETICS_WIZARDDUST" amount="0.3" />
+			</Ingestion>
+		</StatusEffects>
+  	</CellData>
 
 	<Reaction probability="20"
 		input_cell1="[fire]" input_cell2="pharma_aq_pharmadust"
@@ -154,6 +187,11 @@
 	<Reaction probability="60"
 		input_cell1="blood_worm" input_cell2="[pharma_pharmadust]"
 		output_cell1="pharma_w" output_cell2="pharma_w" >
+  	</Reaction>
+
+	<Reaction probability="60"
+		input_cell1="magic_liquid_berserk" input_cell2="[pharma_pharmadust]"
+		output_cell1="pharma_wizarddust" output_cell2="pharma_wizarddust" >
   	</Reaction>
 
 </Materials>
