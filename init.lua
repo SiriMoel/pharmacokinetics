@@ -81,6 +81,7 @@ inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "varying 
 
 GameSetPostFxParameter("pharma_datura_effect_amount", 0, 0, 0, 0)
 GameSetPostFxParameter("pharma_pharmadust_effect_amount", 0, 0, 0, 0)
+GameSetPostFxParameter("pharma_wizarddust_effect_amount", 0, 0, 0, 0)
 
 -- player
 function OnPlayerSpawned( player )
