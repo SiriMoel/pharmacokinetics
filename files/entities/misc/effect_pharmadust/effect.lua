@@ -38,13 +38,12 @@ end
 
 local howhigh = tonumber(GlobalsGetValue("pharmacokinetics.pharmadust_howhigh", "0"))
 
-
 if howhigh >= 6000 then
     howhigh = 6000
+end
 
-elseif amount_consumed >= 1 then
+if amount_consumed >= 10 then
     howhigh = math.min(howhigh + 1, 6000)
-
 else
     howhigh = math.floor(howhigh * 0.95)
 end

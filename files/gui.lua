@@ -38,7 +38,7 @@ function GuiRender()
     local y = 43
 
     local height = 1
-    local width = 40
+    local width = 40.25
 
     if ModSettingGet("pharmacokinetics.pharmabar_at_soulsgui") then
         x = 455

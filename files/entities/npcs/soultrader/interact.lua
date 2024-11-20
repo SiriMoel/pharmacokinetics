@@ -1,6 +1,5 @@
 dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
 dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
-dofile_once("mods/souls/files/scripts/souls.lua")
 
 local dialog_system = dofile_once("mods/pharmacokinetics/lib/DialogSystem/dialog_system.lua")
 
@@ -22,17 +21,39 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                         text = "#Yes.#",
                         options = Shop({
                             {
-                                name = "10 souls",
-                                desc = "10 random souls. Cannot be gilded or boss souls.",
-                                price = 20000,
+                                name = "Soul Tree Seed",
+                                desc = "The seed of an immortal tree that produces souls out of \nthe very essence of magic.",
+                                price = 250000,
                                 func = function(x, y)
+                                    EntityLoad("mods/pharmacokinetics/files/entities/plants/soultree/seed/seed.xml", x, y)
+                                    dialog.show({
+                                        text = "#Transaction successful.#",
+                                        options = {
+                                            {
+                                                text="Close",
+                                                func = function(dialog)
+                                                    dialog.close()
+                                                end,
+                                            },
+                                        },
+                                    })
+                                    SetShopMultiplier(GetShopMultiplier() + 0.01)
+                                end,
+                            },
+                            --[[{
+                                name = "100 souls",
+                                desc = "100 random souls. Cannot be gilded or boss souls.",
+                                price = 200000,
+                                func = function(x, y)
+                                    dofile_once("mods/souls/files/scripts/souls.lua")
+                                    math.randomseed(x + GameGetFrameNum(), y + GameGetFrameNum())
                                     for i=1,10 do
                                         local type = ""
-                                        type = GetRandomSoulType(false)
-                                        while type == "gilded" do
-                                            type = GetRandomSoulType(false)
+                                        type = soul_types[math.random(1, #soul_types)]
+                                        while type == "gilded" or type == "boss" do
+                                            type = soul_types[math.random(1, #soul_types)]
                                         end
-                                        AddSouls(type, 1)
+                                        AddSouls(type, 10)
                                     end
                                     dialog.show({
                                         text = "#Transaction successful.#",
@@ -45,14 +66,15 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                             },
                                         },
                                     })
-                                    SetShopMultiplier(GetShopMultiplier() + 0.1)
+                                    SetShopMultiplier(GetShopMultiplier() + 0.03)
                                 end,
-                            },
-                            {
+                            },]]
+                            --[[{
                                 name = "100 souls",
                                 desc = "100 random souls. Cannot be gilded or boss souls.",
                                 price = 200000,
                                 func = function(x, y)
+                                    dofile_once("mods/souls/files/scripts/souls.lua")
                                     for i=1,10 do
                                         local type = ""
                                         type = GetRandomSoulType(false)
@@ -72,30 +94,10 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                             },
                                         },
                                     })
-                                    SetShopMultiplier(GetShopMultiplier() + 0.1)
+                                    SetShopMultiplier(GetShopMultiplier() + 0.03)
                                 end,
-                            },
-                            {
-                                name = "Soul Tree Seed",
-                                desc = "The seed of an immortal tree that produces souls out of the very essence of magic.",
-                                price = 250000,
-                                func = function(x, y)
-                                    EntityLoad("mods/pharmacokinetics/files/entities/plants/soultree/seed/seed.xml", x, y)
-                                    dialog.show({
-                                        text = "#Transaction successful.#",
-                                        options = {
-                                            {
-                                                text="Close",
-                                                func = function(dialog)
-                                                    dialog.close()
-                                                end,
-                                            },
-                                        },
-                                    })
-                                    SetShopMultiplier(GetShopMultiplier() + 0.01)
-                                end,
-                            },
-                        }),
+                            },]]
+                        }, x, y),
                     })
                 end,
             },

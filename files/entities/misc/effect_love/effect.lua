@@ -25,9 +25,10 @@ if howhigh >= 1000 then
     howhigh = 1000
     IncreaseFlightLeft(player, 0.1)
 
-elseif amount_consumed >= 1 then
-    howhigh = math.min(howhigh + 1, 1000)
+end
 
+if amount_consumed >= 10 then
+    howhigh = math.min(howhigh + 1, 1000)
 else
     howhigh = math.floor(howhigh * 0.95)
 end

@@ -73,8 +73,8 @@ local scenes = {
 	{ -15949, -6396, "mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", false },
 }
 
-if ModIsEnabled("Souls") then
-	table.insert(scenes, { 0, -100, "mods/pharmacokinetics/files/entities/npcs/soultrader/npc.xml", false })
+if ModIsEnabled("souls") then
+	table.insert(scenes, { 13135, 1649, "mods/pharmacokinetics/files/entities/npcs/soultrader/npc.xml", false })
 end
 
 add_scene(scenes)
@@ -124,6 +124,11 @@ function OnPlayerSpawned( player )
 		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",
 		execute_every_n_frame=60,
 	})
+
+	--[[EntityAddComponent2(player, "LuaComponent", {
+		script_source_file="mods/pharmacokinetics/files/scripts/player_everyframe.lua",
+		execute_every_n_frame=1,
+	})]]
 
 	EntityAddComponent(player, "LuaComponent", {
         script_damage_about_to_be_received="mods/pharmacokinetics/files/scripts/player_damage_handler.lua"

@@ -62,6 +62,13 @@ local to_insert = {
 		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_pharmadust/effect.xml",
 	},
 	{
+		id="PHARMACOKINETICS_WIZARDDUST",
+		ui_name="$status_moldos_wizarddust",
+		ui_description="$statusdesc_moldos_wizarddust",
+		ui_icon="mods/pharmacokinetics/files/status_indicators/wizarddust.png",
+		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_wizarddust/effect.xml",
+	},
+	{
 		id="PHARMACOKINETICS_OVERDOSE_IMMUNITY",
 		ui_name="$status_moldos_overdoseimmunity",
 		ui_description="$statusdesc_moldos_overdoseimmunity",

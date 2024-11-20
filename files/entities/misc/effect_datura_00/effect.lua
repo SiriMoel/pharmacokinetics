@@ -29,10 +29,10 @@ local last_frame = tonumber(GlobalsGetValue("pharmacokinetics.datura_dream_frame
 if howhigh >= 2000 then
     howhigh = 2000
     GameAddFlagRun("pharmacokinetics.datura_dreaming")
+end
 
-elseif amount_consumed >= 1 then
+if amount_consumed > 10 then
     howhigh = math.min(howhigh + 1, 2000)
-
 else
     howhigh = math.floor(howhigh * 0.95)
     GameRemoveFlagRun("pharmacokinetics.datura_dreaming")

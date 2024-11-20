@@ -29,9 +29,10 @@ local howhigh = tonumber(GlobalsGetValue("pharmacokinetics.wizarddust_howhigh", 
 if howhigh >= 4000 then
     howhigh = 4000
 
-elseif amount_consumed >= 1 then
-    howhigh = math.min(howhigh + 1, 4000)
+end
 
+if amount_consumed >= 10 then
+    howhigh = math.min(howhigh + 1, 4000)
 else
     howhigh = math.floor(howhigh * 0.95)
 end

@@ -186,7 +186,7 @@
 		>
     	<Graphics
 			texture_file="mods/pharmacokinetics/files/materials_gfx/naloxone.png"
-			color="ffDA8078" >
+			color="ffDC9628" >
     	</Graphics>
 		<StatusEffects>
 			<Stains>
@@ -220,11 +220,11 @@
 		>
     	<Graphics
 			texture_file="mods/pharmacokinetics/files/materials_gfx/love.png"
-			color="ffDA8078" >
+			color="ffB82D50" >
     	</Graphics>
 		<StatusEffects>
 			<Ingestion>
-				<StatusEffect type="PHARMACOKINETICS_LOVE" amount="0.4" />
+				<StatusEffect type="PHARMACOKINETICS_LOVE" amount="0.2" />
 			</Ingestion>
 		</StatusEffects>
   	</CellData>
