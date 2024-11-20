@@ -315,10 +315,14 @@ function Plant_GrowUp(plant, x, y)
         ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(plant, "LuaComponent", "pharmaplant_script_growup") or 0, "execute_every_n_frame", ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_ttguexf") or 0, "value_int"))
         if ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_isfinal") or 0, "value_bool") or comp_nextstage_name == nil then
             EntityAddTag(plant, "pharma_plant_final")
+            local fruit_every_x_frames = math.ceil(ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_ttguexf") or 0, "value_int") / 6)
+            if fruit_every_x_frames < 1 then
+                fruit_every_x_frames = 18000
+            end
             EntityAddComponent2(plant, "LuaComponent", {
                 _tags = "pharmaplant_script_fruit",
                 script_source_file = "mods/pharmacokinetics/files/scripts/plant_fruit.lua",
-                execute_every_n_frame = math.ceil(ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_ttguexf") or 0, "value_int") / 6)
+                execute_every_n_frame = fruit_every_x_frames,
             })
         end
         ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_current_stage") or 0, "value_int", currentstage)
@@ -328,75 +332,3 @@ function Plant_GrowUp(plant, x, y)
         EntityKill(plant)
     end
 end
-
---[[function Plant_GrowUp(plant, x, y) -- rip old system (it never worked)
-    local currentstage = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_current_stage") or 0, "value_int")
-
-    GamePrint(tostring(currentstage + 1))
-    
-    local plant_immortal = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_ttguexf") or 0, "value_int") == -1
-    
-    local growthstages = {}
-
-    if plant_immortal then
-        
-    elseif EntityHasTag(plant, "pharma_plant_final") then
-        GamePrint("meow 1")
-        dofile_once(ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .."_script_death") or 0, "value_string") or "")
-        plant_death(plant, x, y)
-        EntityKill(plant)
-    elseif EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 2) .. "_name") == nil then --ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .. "_isfinal") or 0, "value_bool") or ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_isfinal") or 0, "value_bool") then
-        GamePrint("meow 2")
-        table.insert(growthstages, {
-            name = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .."_name") or 0, "value_string"),
-            isfinal = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .."_isfinal") or 0, "value_bool"),
-            ttguexf = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .."_ttguexf") or 0, "value_int"),
-            script_death = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .."_script_death") or 0, "value_string") or "",
-            sprite = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .."_sprite") or 0, "value_string"),
-            offset_x = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .."_offset_x") or 0, "value_int"),
-            offset_y = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .."_offset_y") or 0, "value_int"),
-            height = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .."_height") or 0, "value_int"),
-        })
-
-        local plant_new = Plant(EntityGetName(plant), x, y, growthstages, {
-            name = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_name") or 0, "value_string"),
-            desc = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_name") or 0, "value_string"),
-            sprite = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_sprite") or 0, "value_string"),
-            sprite_inhand = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_sprite_inhand") or 0, "value_string"),
-            sprite_inworld = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_sprite_inworld") or 0, "value_string"),
-            script_kicked = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_script_kicked") or 0, "value_string"),
-        }, currentstage + 1, true)
-    
-        EntityKill(plant)
-    elseif EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .. "_name") ~= nil and not ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .. "_isfinal") or 0, "value_bool") then
-        GamePrint("meow 3")
-        local stage_up_to = currentstage + 1
-        while EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(stage_up_to) .. "_name") ~= nil do
-            table.insert(growthstages, {
-                name = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(stage_up_to) .."_name") or 0, "value_string"),
-                isfinal = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(stage_up_to) .."_isfinal") or 0, "value_bool"),
-                ttguexf = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(stage_up_to) .."_ttguexf") or 0, "value_int"),
-                script_death = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(stage_up_to) .."_script_death") or 0, "value_string") or "",
-                sprite = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(stage_up_to) .."_sprite") or 0, "value_string"),
-                offset_x = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(stage_up_to) .."_offset_x") or 0, "value_int"),
-                offset_y = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(stage_up_to) .."_offset_y") or 0, "value_int"),
-                height = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(stage_up_to) .."_height") or 0, "value_int"),
-            })
-            stage_up_to = stage_up_to + 1
-        end
-    
-        local plant_new = Plant(EntityGetName(plant), x, y, growthstages, {
-            name = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_name") or 0, "value_string"),
-            desc = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_name") or 0, "value_string"),
-            sprite = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_sprite") or 0, "value_string"),
-            sprite_inhand = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_sprite_inhand") or 0, "value_string"),
-            sprite_inworld = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_sprite_inworld") or 0, "value_string"),
-            script_kicked = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_script_kicked") or 0, "value_string"),
-        }, currentstage + 1, false)
-
-        EntityKill(plant)
-    else
-        GamePrint("meow 4")
-        print("PHARMACOKINETICS - plant went wrong :(")
-    end
-end]]

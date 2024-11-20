@@ -1,1 +1,26 @@
-knock knocnk
+(imgur embed with mod title)
+
+An alchemy mod about managing your magic liquid intake.
+This mod adds new materials, merchant npcs, growable plants with fruit, and a stat bar to manage.
+
+Find new ways to ingest magic liquids, and create new magic materials.
+Be careful not to let the bar fill up completely...
+
+(imgur embed with fancy looking bar?)
+
+[b][/b] new materials
+[b][/b] new items
+[b][/b] npcs
+[b][/b] plants
+
+(imgur embed with datura flowers?)
+
+Cross-mod interactions with:
+[b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3272653027]Forsaken Delicacies[/url][/b] item for sale from npc
+[b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3313573016]Souls[/url][/b] new npc, new plant
+This mod should load after Forsaken Delicacies and Souls for compatibility to work.
+
+Discord: https://discord.gg/FKaRA9HMUq
+Github: https://github.com/SiriMoel/pharmacokinetics
+
+(imgur embed showing translocator?)

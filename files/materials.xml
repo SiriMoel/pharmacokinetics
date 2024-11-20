@@ -126,12 +126,12 @@
 		texture_file="mods/pharmacokinetics/files/materials_gfx/daturadust.png"
 		color="ff4D462C" >
     </Graphics>
-	<StatusEffects>
-		<Ingestion>
-			<StatusEffect type="PHARMACOKINETICS_DATURA" amount="0.05" />
-		</Ingestion>
-	</StatusEffects>
-  </CellData>
+		<StatusEffects>
+			<Ingestion>
+				<StatusEffect type="PHARMACOKINETICS_DATURA" amount="0.05" />
+			</Ingestion>
+		</StatusEffects>
+  	</CellData>
 
   	<CellData
 		name="pharma_wizarddust"
@@ -164,34 +164,100 @@
 		</StatusEffects>
   	</CellData>
 
-	<Reaction probability="20"
-		input_cell1="[fire]" input_cell2="pharma_aq_pharmadust"
-		output_cell1="[fire]" output_cell2="steam" output_cell3="pharma_pharmadust" >
-  	</Reaction>
+	<CellData
+		name="pharma_naloxone"
+		ui_name="$mat_moldos_naloxone"
+  		tags="[sand_ground],[corrodible],[alchemy],[food],"
+		burnable="0"
+		density="6"
+		durability="9"
+		cell_type="liquid"
+		wang_color="ffDA8079"
+		generates_smoke="0"
+		liquid_gravity="1.2"
+		liquid_sand="1"
+		on_fire="0"
+		requires_oxygen="1"
+		temperature_of_fire="10"
+		hp="10000" 
+		audio_physics_material_event="sand"
+		audio_physics_material_wall="sand"
+		audio_physics_material_solid="bone"
+		>
+    	<Graphics
+			texture_file="mods/pharmacokinetics/files/materials_gfx/naloxone.png"
+			color="ffDA8078" >
+    	</Graphics>
+		<StatusEffects>
+			<Stains>
+				<StatusEffect type="PHARMACOKINETICS_OVERDOSE_IMMUNITY" />
+			</Stains>
+			<Ingestion>
+				<StatusEffect type="PHARMACOKINETICS_OVERDOSE_IMMUNITY" amount="0.5" />
+			</Ingestion>
+		</StatusEffects>
+  	</CellData>
 
-	<Reaction probability="60"
-		input_cell1="water" input_cell2="pharma_pharmadust"
-		output_cell1="pharma_aq_pharmadust" output_cell2="water" >
-  	</Reaction>
+	<CellData
+		name="pharma_love"
+		ui_name="$mat_moldos_love"
+  		tags="[sand_ground],[corrodible],[alchemy],[food],"
+		burnable="0"
+		density="6"
+		durability="9"
+		cell_type="liquid"
+		wang_color="ffDA8080"
+		generates_smoke="0"
+		liquid_gravity="1.2"
+		liquid_sand="1"
+		on_fire="0"
+		requires_oxygen="1"
+		temperature_of_fire="10"
+		hp="10000" 
+		audio_physics_material_event="sand"
+		audio_physics_material_wall="sand"
+		audio_physics_material_solid="bone"
+		>
+    	<Graphics
+			texture_file="mods/pharmacokinetics/files/materials_gfx/love.png"
+			color="ffDA8078" >
+    	</Graphics>
+		<StatusEffects>
+			<Ingestion>
+				<StatusEffect type="PHARMACOKINETICS_LOVE" amount="0.4" />
+			</Ingestion>
+		</StatusEffects>
+  	</CellData>
 
-	<Reaction probability="100"
-		input_cell1="radioactive_liquid" input_cell2="bone"
-		output_cell1="pharma_pharmadust" output_cell2="pharma_pharmadust" >
-  	</Reaction>
-
-	<Reaction probability="12"
-		input_cell1="pharma_aq_pharmadust" 	input_cell2="radioactive_liquid"
-		output_cell1="pharma_aq_pharmadust" 	output_cell2="water" >
-  	</Reaction>
-
-	<Reaction probability="60"
-		input_cell1="blood_worm" input_cell2="[pharma_pharmadust]"
-		output_cell1="pharma_w" output_cell2="pharma_w" >
-  	</Reaction>
-
-	<Reaction probability="60"
-		input_cell1="magic_liquid_berserk" input_cell2="[pharma_pharmadust]"
-		output_cell1="pharma_wizarddust" output_cell2="pharma_wizarddust" >
-  	</Reaction>
+	<CellData
+		name="pharma_demagified_pharmadust"
+		ui_name="$mat_moldos_demagified_pharmadust"
+  		tags="[sand_ground],[corrodible],[alchemy],[food],"
+		burnable="0"
+		density="6"
+		durability="9"
+		cell_type="liquid"
+		wang_color="ffD0C7CF"
+		generates_smoke="0"
+		liquid_gravity="1.2"
+		liquid_sand="1"
+		on_fire="0"
+		requires_oxygen="1"
+		temperature_of_fire="10"
+		hp="10000" 
+		audio_physics_material_event="sand"
+		audio_physics_material_wall="sand"
+		audio_physics_material_solid="bone"
+		>
+    	<Graphics
+			texture_file="mods/pharmacokinetics/files/materials_gfx/demagified_pharmadust.png"
+			color="ffD0C7CE" >
+    	</Graphics>
+		<StatusEffects>
+			<Ingestion>
+				<StatusEffect type="FOOD_POISONING" amount="0.2" />
+			</Ingestion>
+		</StatusEffects>
+  	</CellData>
 
 </Materials>

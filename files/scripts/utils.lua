@@ -137,3 +137,32 @@ function GetMaterialIngestionEffect(material) -- i have no idea what im doing so
         end
     end
 end
+
+function IncreaseFlightLeft(player, amount)
+    local comp = EntityGetFirstComponent( player, "CharacterDataComponent" )
+    if comp ~= nil then
+        local flight = ComponentGetValue2( comp, "mFlyingTimeLeft" )
+		local maxflight = ComponentGetValue2( comp, "fly_time_max" ) or 3.0
+        flight = math.min( maxflight, flight + 1.2 )
+        ComponentSetValue2( comp, "mFlyingTimeLeft", flight )
+    end
+end
+
+function PickRandomFromTableWeighted(x, y, table) -- i stole from utilities.lua
+    if #table == 0 then return nil end
+    local weight_sum = 0.0
+    for i,v in ipairs(table) do
+        v.weight_min = weight_sum
+        v.weight_max = weight_sum + v.probability
+        weight_sum = v.weight_max
+    end
+    local val = ProceduralRandomf(x, y, 0.0, weight_sum )
+    local result = table[1]
+    for i,v in ipairs(table) do
+        if val >= v.weight_min and val <= v.weight_max then
+            result = v
+            break
+        end
+    end
+    return result
+end

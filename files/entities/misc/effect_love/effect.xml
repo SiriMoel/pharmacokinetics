@@ -1,0 +1,43 @@
+<Entity>
+	
+	<InheritTransformComponent>
+    </InheritTransformComponent>	
+    
+    <GameEffectComponent
+        effect="PHARMACOKINETICS_LOVE"
+        frames="600"
+    >
+	</GameEffectComponent>
+
+	<GameEffectComponent 
+        effect="CHARM"
+        frames="600"
+    >
+	</GameEffectComponent >
+
+    <!--<DrugEffectModifierComponent>
+		<fx_add
+			nightvision_amount="0.1"
+		/>
+	</DrugEffectModifierComponent>-->
+
+	<LuaComponent
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_love/effect.lua"
+		execute_every_n_frame="1"
+	></LuaComponent>
+
+    <LuaComponent
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_love/effect_start.lua"
+		execute_every_n_frame="4"
+		remove_after_executed="1"
+		>
+	</LuaComponent>
+	
+	<LuaComponent
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_love/effect_start.lua"
+		execute_every_n_frame="-1"
+		execute_on_removed="1"
+		>
+	</LuaComponent>
+
+</Entity>

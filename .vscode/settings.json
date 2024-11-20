@@ -2,6 +2,7 @@
     "Lua.diagnostics.disable": [
         "unused-local",
         "cast-local-type",
-        "lowercase-global"
+        "lowercase-global",
+        "undefined-global"
     ]
 }

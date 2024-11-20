@@ -1,0 +1,30 @@
+<Entity name="$npc_moldos_soultrader" tags="hittable">
+
+    <!-- using mysterious stranger sprite is intentional -->
+    <SpriteComponent 
+		image_file="mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/sprite.xml" 
+		offset_x="0"
+		offset_y="0">
+	</SpriteComponent>
+
+    <InteractableComponent
+        radius="10"
+        ui_text="[INTERACT]"
+        name="$npc_moldos_soultrader" >
+    </InteractableComponent>
+
+    <LuaComponent
+        script_interacting="mods/pharmacokinetics/files/entities/npcs/soultrader/interact.lua"
+        script_source_file="mods/pharmacokinetics/files/entities/npcs/soultrader/interact.lua"
+        execute_every_n_frame="1"
+        enable_coroutines="1" >
+    </LuaComponent>
+
+    <!--<SimplePhysicsComponent 
+        can_go_up="0"
+        >
+    </SimplePhysicsComponent >
+    
+    <VelocityComponent />-->
+
+</Entity>

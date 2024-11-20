@@ -6,6 +6,7 @@ dofile_once("mods/pharmacokinetics/lib/DialogSystem/init.lua")("mods/pharmacokin
 dofile_once("mods/pharmacokinetics/lib/injection.lua")
 
 ModMaterialsFileAdd("mods/pharmacokinetics/files/materials.xml")
+ModMaterialsFileAdd("mods/pharmacokinetics/files/reactions.xml")
 
 -- set & append
 ModLuaFileAppend( "data/scripts/status_effects/status_list.lua", "mods/pharmacokinetics/files/status_list.lua" )
@@ -72,6 +73,10 @@ local scenes = {
 	{ -15949, -6396, "mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", false },
 }
 
+if ModIsEnabled("Souls") then
+	table.insert(scenes, { 0, -100, "mods/pharmacokinetics/files/entities/npcs/soultrader/npc.xml", false })
+end
+
 add_scene(scenes)
 
 -- shaders (ty nathan)
@@ -82,6 +87,7 @@ inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "varying 
 GameSetPostFxParameter("pharma_datura_effect_amount", 0, 0, 0, 0)
 GameSetPostFxParameter("pharma_pharmadust_effect_amount", 0, 0, 0, 0)
 GameSetPostFxParameter("pharma_wizarddust_effect_amount", 0, 0, 0, 0)
+GameSetPostFxParameter("pharma_love_effect_amount", 0, 0, 0, 0)
 
 -- player
 function OnPlayerSpawned( player )
@@ -112,6 +118,7 @@ function OnPlayerSpawned( player )
 	GlobalsSetValue("pharmacokinetics.datura_howhigh", "0")
 	GlobalsSetValue("pharmacokinetics.pharmadust_howhigh", "0")
 	GlobalsSetValue("pharmacokinetics.wizarddust_howhigh", "0")
+	GlobalsSetValue("pharmacokinetics.love_howhigh", "0")
 
     EntityAddComponent2(player, "LuaComponent", {
 		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",

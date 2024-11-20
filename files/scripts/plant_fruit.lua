@@ -20,9 +20,10 @@ local fruit_x = x + math.random(-10, 10)
 local fruit_y = y - height
 
 local amount = math.random(0, 2)
---GamePrint(tostring(amount))
+
+if #EntityGetInRadiusWithTag(x, y, 80, "pharma_fruit") >= 5 then return end -- to not lag the game with too many entities
 
 for i=1,amount do
-    fruit_x = x + math.random(-10, 10)
-    local fruit = EntityLoad(fruit_path, fruit_x, fruit_y) --EntityLoad("mods/pharmacokinetics/files/entities/plants/fruit.xml", fruit_x, fruit_y)
+    fruit_x = x + math.random(-15, 15)
+    local fruit = EntityLoad(fruit_path, fruit_x, fruit_y)
 end

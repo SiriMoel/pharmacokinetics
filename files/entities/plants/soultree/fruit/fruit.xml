@@ -1,0 +1,95 @@
+<Entity tags="hittable,pharma_fruit,teleportable_NOT,item_physics,item_pickup">
+
+	<UIInfoComponent
+		name="$item_moldos_soultreefruit"
+	></UIInfoComponent>
+
+	<PhysicsBodyComponent 
+		_tags="enabled_in_world"
+		uid="1" 
+		allow_sleep="1" 
+		angular_damping="0" 
+		fixed_rotation="0" 
+		is_bullet="1" 
+		linear_damping="0"
+		auto_clean="1"
+		hax_fix_going_through_ground="1"
+		on_death_leave_physics_body="0"
+		on_death_really_leave_body="0"
+	></PhysicsBodyComponent>
+
+	<PhysicsImageShapeComponent 
+		body_id="1"
+		centered="1"
+		image_file="mods/pharmacokinetics/files/entities/plants/soultree/fruit/sprite_inworld.png"
+		material="meat_fruit"
+	></PhysicsImageShapeComponent>
+
+	<PhysicsThrowableComponent
+		max_throw_speed="130"
+		throw_force_coeff="1.5"
+	></PhysicsThrowableComponent>
+
+	<ProjectileComponent
+		_tags="enabled_in_world"
+		lifetime="-1"
+		penetrate_entities="1"
+		never_hit_player="1"
+	></ProjectileComponent>
+
+	<VelocityComponent
+		_tags="enabled_in_world"
+	></VelocityComponent>
+	
+	<ItemComponent
+		_tags="enabled_in_world"
+		max_child_items="0"
+		is_pickable="1"
+		is_equipable_forced="1"
+		ui_sprite="mods/pharmacokinetics/files/entities/plants/soultree/fruit/sprite.png"
+		preferred_inventory="QUICK"
+		item_name="$item_moldos_soultreefruit"
+		ui_description="$itemdesc_moldos_soultreefruit"
+	></ItemComponent>
+  
+	<SpriteComponent
+		_tags="enabled_in_hand"
+		_enabled="0"
+		offset_x="4"
+		offset_y="4"
+		image_file="mods/pharmacokinetics/files/entities/plants/soultree/fruit/sprite_inworld.png"
+	></SpriteComponent>
+
+	<HitboxComponent 
+		_tags="enabled_in_world"
+		aabb_min_x="-3" 
+		aabb_max_x="3" 
+		aabb_min_y="-5" 
+		aabb_max_y="0" >
+	</HitboxComponent>
+	
+	<AbilityComponent
+		ui_name="$item_moldos_soultreefruit"
+		throw_as_item="1"
+		><gun_config
+			deck_capacity="0"
+		></gun_config>
+	</AbilityComponent>
+
+	<VariableStorageComponent
+		_tags="pharma_soul"
+		name="pharma_soul"
+		value_string="orcs"
+	></VariableStorageComponent>
+
+    <LuaComponent
+        script_kick="mods/pharmacokinetics/files/entities/plants/soultree/fruit/script_kick.lua"
+    ></LuaComponent>
+
+	<LuaComponent
+        script_source_file="mods/pharmacokinetics/files/entities/plants/soultree/fruit/init.lua"
+		execute_on_added="1"
+		remove_after_executed="1"
+    ></LuaComponent>
+
+</Entity>

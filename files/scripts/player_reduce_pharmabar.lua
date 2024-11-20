@@ -19,6 +19,6 @@ if baramount < 400 and GameHasFlagRun("pharma_warned") then
     GameRemoveFlagRun("pharma_warned")
 end
 
-if baramount >= 500 then
+if baramount >= 500 and not GameHasFlagRun("pharma_overdose_immunity") then
     EntityInflictDamage(player, 1000000000, "DAMAGE_CURSE", "Overdose :(", "BLOOD_EXPLOSION", x, y, player, x, y, 0) -- will be replaced with death countdown later maybe
 end

@@ -1,6 +1,7 @@
 uniform vec4 pharma_datura_effect_amount;
 uniform vec4 pharma_pharmadust_effect_amount;
 uniform vec4 pharma_wizarddust_effect_amount;
+uniform vec4 pharma_love_effect_amount;
 
 vec3 pharma_get_colour(vec3 coord) {
     vec3 base = vec3(0.6, 0.3, 0.3);
