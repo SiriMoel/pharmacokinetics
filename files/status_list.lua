@@ -11,7 +11,7 @@ local to_insert = {
 	},
 	{
 		id="PHARMACOKINETICS_REDUCE_PHARMABAR_SMALL",
-		ui_name="$status_moldos_rpbs.",
+		ui_name="$status_moldos_rpbs",
 		ui_description="$statusdesc_moldos_rpbs",
 		ui_icon="data/ui_gfx/status_indicators/ingestion_damage.png",
 		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_reduce_pharmabar_small/effect.xml",
