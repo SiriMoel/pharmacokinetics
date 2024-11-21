@@ -82,6 +82,20 @@ local to_insert = {
 		ui_icon="mods/pharmacokinetics/files/status_indicators/love.png",
 		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_love/effect.xml",
 	},
+	{
+		id="PHARMACOKINETICS_ADDICTION",
+		ui_name="$status_moldos_addiction",
+		ui_description="$statusdesc_moldos_addiction",
+		ui_icon="mods/pharmacokinetics/files/status_indicators/addiction.png",
+		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_addiction/effect.xml",
+	},
+	{
+		id="PHARMACOKINETICS_WITHDRAWALS",
+		ui_name="$status_moldos_withdrawals",
+		ui_description="$statusdesc_moldos_withdrawals",
+		ui_icon="mods/pharmacokinetics/files/status_indicators/addiction.png",
+		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_addiction/effect.xml",
+	},
 }
 
 for i,v in ipairs(to_insert) do

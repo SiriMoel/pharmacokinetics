@@ -3,11 +3,15 @@ dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
 
 local baramount = 0
 local barvalue = 0
+local addictionlevel = 0
+local addictionbarvalue = 0
 
 function OnWorldPreUpdate()
     if GetPlayer() ~= nil then
         baramount = GetPharmaBarAmount()
         barvalue = math.max((baramount / 500) * 100, 0)
+        addictionlevel = tonumber(GlobalsGetValue("pharmacokinetics.addiction_level", "0"))
+        addictionbarvalue = math.max((addictionlevel / 10) * 100, 0)
     end
 end
 
@@ -47,8 +51,10 @@ function GuiRender()
         width = 45
     end
 
-    GuiImageNinePiece(gui, gui_id, x, y, width * (barvalue * 0.01), height, 1, "mods/pharmacokinetics/files/gui/bar.png")
+    GuiImageNinePiece(gui, gui_id, x, y, width * (addictionbarvalue * 0.01), height, 1, "mods/pharmacokinetics/files/gui/bar_addiction.png")
     GuiZSetForNextWidget(gui, 1000 + 2)
+    GuiImageNinePiece(gui, gui_id, x, y, width * (barvalue * 0.01), height, 1, "mods/pharmacokinetics/files/gui/bar.png")
+    GuiZSetForNextWidget(gui, 1000 + 4)
     GuiImageNinePiece(gui, gui_id, x, y, width, height, 1, "mods/pharmacokinetics/files/gui/bar_bg.png")
 
     --GuiLayoutBeginVertical(gui, 72, 90)

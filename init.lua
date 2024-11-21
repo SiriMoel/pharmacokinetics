@@ -71,6 +71,7 @@ end
 local scenes = {
 	{ 10060, -1201 - 6, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", false },
 	{ -15949, -6396, "mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", false },
+	{ -100, 0, "mods/pharmacokinetics/files/entities/npcs/flaskologist/npc.xml", false },
 }
 
 if ModIsEnabled("souls") then
@@ -119,10 +120,15 @@ function OnPlayerSpawned( player )
 	GlobalsSetValue("pharmacokinetics.pharmadust_howhigh", "0")
 	GlobalsSetValue("pharmacokinetics.wizarddust_howhigh", "0")
 	GlobalsSetValue("pharmacokinetics.love_howhigh", "0")
+	GlobalsSetValue("pharmacokinetics.check_addiction_frame", "0")
+	GlobalsSetValue("pharmacokinetics.addiction_level", "0")
+	GlobalsSetValue("pharmacokinetics.amount_old", "0")
+	GlobalsSetValue("pharmacokinetics.magic_liquid_ingested_frame", "0")
+
 
     EntityAddComponent2(player, "LuaComponent", {
 		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",
-		execute_every_n_frame=60,
+		execute_every_n_frame=55,
 	})
 
 	--[[EntityAddComponent2(player, "LuaComponent", {

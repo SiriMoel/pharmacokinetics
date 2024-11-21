@@ -1,0 +1,53 @@
+<Entity>
+	
+	<InheritTransformComponent>
+    </InheritTransformComponent>	
+    
+    <GameEffectComponent
+        effect="PHARMACOKINETICS_ADDICTION"
+        frames="-1"
+    >
+	</GameEffectComponent>
+
+	<!--<LuaComponent
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_addiction/effect.lua"
+		execute_every_n_frame="1"
+	></LuaComponent>
+
+    <LuaComponent
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_addiction/effect_start.lua"
+		execute_every_n_frame="4"
+		remove_after_executed="1"
+		>
+	</LuaComponent>-->
+
+	<LuaComponent
+		script_source_file="data/scripts/status_effects/twitchy.lua"
+		execute_every_n_frame="60"
+		>
+	</LuaComponent>
+	
+	<LuaComponent
+		script_shot="data/scripts/status_effects/twitchy_shot.lua"
+		execute_every_n_frame="-1"
+		>
+	</LuaComponent>
+
+	<UIIconComponent
+		name="$status_moldos_addiction"
+		description="$statusdesc_moldos_addiction"
+		icon_sprite_file="mods/pharmacokinetics/files/status_indicators/addiction.png"
+		is_perk="0"
+		display_above_head="0"
+		display_in_hud="1"
+		>
+	</UIIconComponent>
+	
+	<LuaComponent
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_addiction/effect_start.lua"
+		execute_every_n_frame="-1"
+		execute_on_removed="1"
+		>
+	</LuaComponent>
+
+</Entity>

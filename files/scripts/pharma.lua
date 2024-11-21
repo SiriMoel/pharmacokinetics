@@ -306,18 +306,23 @@ end
 function Plant_GrowUp(plant, x, y)
     local currentstage = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_current_stage") or 0, "value_int")
     currentstage = currentstage + 1
-
     local comp_currentstage_name = EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_name")
     local comp_nextstage_name = EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage + 1) .. "_name")
-
     if comp_currentstage_name ~= nil and ComponentGetValue2(comp_currentstage_name, "value_string") ~= nil then
+        local plant_immortal = false
+        local stage_ttguexf = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_ttguexf") or 0, "value_int")
+        if stage_ttguexf == -1 then
+            plant_immortal = true
+        end
         ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(plant, "SpriteComponent") or 0, "image_file", ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_sprite") or 0, "value_string"))
-        ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(plant, "LuaComponent", "pharmaplant_script_growup") or 0, "execute_every_n_frame", ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_ttguexf") or 0, "value_int"))
+        ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(plant, "LuaComponent", "pharmaplant_script_growup") or 0, "execute_every_n_frame",  stage_ttguexf, "value_int")
         if ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_isfinal") or 0, "value_bool") or comp_nextstage_name == nil then
             EntityAddTag(plant, "pharma_plant_final")
-            local fruit_every_x_frames = math.ceil(ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .. "_ttguexf") or 0, "value_int") / 6)
-            if fruit_every_x_frames < 1 then
+            local fruit_every_x_frames = -1
+            if plant_immortal then
                 fruit_every_x_frames = 18000
+            else
+                fruit_every_x_frames = math.ceil(stage_ttguexf / 6)
             end
             EntityAddComponent2(plant, "LuaComponent", {
                 _tags = "pharmaplant_script_fruit",
