@@ -1,4 +1,4 @@
-<Entity>
+<Entity tags="pharma_addiction_effect">
 	
 	<InheritTransformComponent>
     </InheritTransformComponent>	
@@ -15,7 +15,7 @@
 
 	<LuaComponent
 		script_source_file="data/scripts/status_effects/twitchy.lua"
-		execute_every_n_frame="60"
+		execute_every_n_frame="240"
 		>
 	</LuaComponent>
 	
@@ -35,7 +35,7 @@
 		description="$statusdesc_moldos_withdrawals"
 		icon_sprite_file="mods/pharmacokinetics/files/status_indicators/addiction.png"
 		is_perk="0"
-		display_above_head="0"
+		display_above_head="1"
 		display_in_hud="1"
 		>
 	</UIIconComponent>

@@ -17,7 +17,7 @@ end
 if addiction_level > 3 then
     if frame > magic_liquid_ingested_frame + 3600 and frame < magic_liquid_ingested_frame + 36000 then
         math.randomseed(x + frame, y + frame)
-        if math.random(1, 240) == 2 then
+        if math.random(1, 2) == 2 then
             if GameGetGameEffectCount(player, "PHARMACOKINETICS_WITHDRAWALS") == 0 then
                 local entity = EntityLoad("mods/pharmacokinetics/files/entities/misc/effect_withdrawals/effect.xml", x, y)
                 EntityAddChild(player, entity)

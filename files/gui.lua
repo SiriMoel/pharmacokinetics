@@ -51,7 +51,7 @@ function GuiRender()
         width = 45
     end
 
-    GuiImageNinePiece(gui, gui_id, x, y, width * (addictionbarvalue * 0.01), height, 1, "mods/pharmacokinetics/files/gui/bar_addiction.png")
+    GuiImageNinePiece(gui, gui_id, x, y, width * (addictionbarvalue * 0.01), height, 0.6, "mods/pharmacokinetics/files/gui/bar_addiction.png")
     GuiZSetForNextWidget(gui, 1000 + 2)
     GuiImageNinePiece(gui, gui_id, x, y, width * (barvalue * 0.01), height, 1, "mods/pharmacokinetics/files/gui/bar.png")
     GuiZSetForNextWidget(gui, 1000 + 4)

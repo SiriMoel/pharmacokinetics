@@ -27,6 +27,11 @@
 		execute_every_n_frame="1"
 	></LuaComponent>
 
+	<LuaComponent
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_datura_03/effect.lua"
+		execute_every_n_frame="5"
+	></LuaComponent>
+
     <!--<LuaComponent
 		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_datura_00/effect_start.lua"
 		execute_every_n_frame="4"

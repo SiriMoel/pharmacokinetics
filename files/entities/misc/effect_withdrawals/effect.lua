@@ -10,7 +10,7 @@ local frame = GameGetFrameNum()
 
 GameAddFlagRun("pharma_withdrawals")
 
-if addiction_level < 3 then
+if addiction_level < 1 then
     GameRemoveFlagRun("pharma_withdrawals")
     EntityKill(this)
 end

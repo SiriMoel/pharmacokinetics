@@ -71,7 +71,7 @@ end
 local scenes = {
 	{ 10060, -1201 - 6, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", false },
 	{ -15949, -6396, "mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", false },
-	{ -100, 0, "mods/pharmacokinetics/files/entities/npcs/flaskologist/npc.xml", false },
+	{ 14220, 7551, "mods/pharmacokinetics/files/entities/npcs/flaskologist/npc.xml", false },
 }
 
 if ModIsEnabled("souls") then
