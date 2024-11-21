@@ -5,12 +5,12 @@
     
     <GameEffectComponent
         effect="PHARMACOKINETICS_WITHDRAWALS"
-        frames="240"
+        frames="300"
     >
 	</GameEffectComponent>
 
 	<LifetimeComponent
-		lifetime="240"
+		lifetime="300"
 	></LifetimeComponent>
 
 	<LuaComponent

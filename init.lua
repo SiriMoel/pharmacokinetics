@@ -32,21 +32,6 @@ for i,file in ipairs(materials_files) do
 	ModTextFileSetContent(file, tostring(xml))
 end
 
---[[local materials = ModTextFileGetContent("data/materials.xml")
-local xml = nxml.parse(materials)
-for element in xml:each_child() do
-    if element.attr.tags ~= nil and string.find(element.attr.tags, "[^%a]magic_liquid[^%a]") then
-       	for child in element:each_of("StatusEffects") do
-            for childdos in child:each_of("Ingestion") do
-               	childdos:add_child(nxml.parse([[
-                    <StatusEffect type="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED" amount="1" />
-               	))
-           	end
-       	end
-   	end
-end
-ModTextFileSetContent("data/materials.xml", tostring(xml))]]
-
 -- pixel scenes (thanks graham)
 local function add_scene(table)
 	local biome_path = ModIsEnabled("noitavania") and "mods/noitavania/data/biome/_pixel_scenes.xml" or "data/biome/_pixel_scenes.xml"
@@ -84,14 +69,13 @@ add_scene(scenes)
 inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "// liquid distortion", "mods/pharmacokinetics/files/shaders/pre.frag")
 inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "gl_FragColor", "mods/pharmacokinetics/files/shaders/post.frag")
 inject(args.StringFile, modes.PREPEND, "data/shaders/post_final.frag", "varying vec2 tex_coord_fogofwar;", "mods/pharmacokinetics/files/shaders/global.frag")
-
 GameSetPostFxParameter("pharma_datura_effect_amount", 0, 0, 0, 0)
 GameSetPostFxParameter("pharma_pharmadust_effect_amount", 0, 0, 0, 0)
 GameSetPostFxParameter("pharma_wizarddust_effect_amount", 0, 0, 0, 0)
 GameSetPostFxParameter("pharma_love_effect_amount", 0, 0, 0, 0)
 
 -- player
-function OnPlayerSpawned( player )
+function OnPlayerSpawned(player)
 
     local px, py = EntityGetTransform(player)
 
@@ -124,6 +108,8 @@ function OnPlayerSpawned( player )
 	GlobalsSetValue("pharmacokinetics.addiction_level", "0")
 	GlobalsSetValue("pharmacokinetics.amount_old", "0")
 	GlobalsSetValue("pharmacokinetics.magic_liquid_ingested_frame", "0")
+	GlobalsSetValue("pharmacokinetics.maxfruitamountperfruiting", "2")
+	GlobalsSetValue("pharmacokinetics.maxfruitamountneartree", "5")
 
 
     EntityAddComponent2(player, "LuaComponent", {
@@ -155,5 +141,6 @@ if translations ~= nil then
 end
 
 function OnModSettingsChanged()
-
+	GlobalsSetValue("pharmacokinetics.maxfruitamountperfruiting", tostring(ModSettingGet("pharmacokinetics.maxfruitamountperfruiting")))
+	GlobalsSetValue("pharmacokinetics.maxfruitamountneartree", tostring(ModSettingGet("pharmacokinetics.maxfruitamountneartree")))
 end

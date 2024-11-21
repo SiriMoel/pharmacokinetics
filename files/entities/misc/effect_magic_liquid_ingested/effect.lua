@@ -8,7 +8,10 @@ if not EntityHasTag(player, "pharma_immune") then
     local frame = GameGetFrameNum()
     local addiction_level = tonumber(GlobalsGetValue("pharmacokinetics.addiction_level", "0"))
     local magic_liquid_ingested_frame = tonumber(GlobalsGetValue("pharmacokinetics.magic_liquid_ingested_frame", "0"))
-    if addiction_level > 0 and frame < magic_liquid_ingested_frame + 60 then
+    if addiction_level >= 1 and frame < magic_liquid_ingested_frame + 30 then
+        addiction_level = addiction_level + 0.2
+    end
+    if frame > magic_liquid_ingested_frame + 600 and frame < magic_liquid_ingested_frame + 3600 then
         addiction_level = addiction_level + 0.2
     end
     GlobalsSetValue("pharmacokinetics.addiction_level", tostring(addiction_level))

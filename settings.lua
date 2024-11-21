@@ -27,6 +27,28 @@ mod_settings = {
         value_default = false,
         scope = MOD_SETTING_SCOPE_RUNTIME,
     },
+	{
+        id = "maxfruitamountperfruiting",
+        ui_name = "Maximum fruit amount",
+        ui_description = "The highest amount of fruit that can be produced by a tree in a single fruiting.",
+        value_default = 2,
+        value_min = 1,
+        value_max = 5,
+        value_display_multiplier = 1,
+        value_display_formatting = " $0 fruit",
+        scope = MOD_SETTING_SCOPE_RUNTIME,
+    },
+	{
+        id = "maxfruitamountneartree",
+        ui_name = "Maximum fruit amount near tree",
+        ui_description = "Trees wont fruit if this amount of fruit is near them already (for performance purposes).",
+        value_default = 5,
+        value_min = 1,
+        value_max = 20,
+        value_display_multiplier = 1,
+        value_display_formatting = " $0 fruit",
+        scope = MOD_SETTING_SCOPE_RUNTIME,
+    },
 }
 
 function ModSettingsUpdate( init_scope )

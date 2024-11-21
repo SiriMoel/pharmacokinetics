@@ -11,6 +11,7 @@ local magic_liquid_ingested_frame = tonumber(GlobalsGetValue("pharmacokinetics.m
 
 if addiction_level < 3 then
     GameRemoveFlagRun("pharma_withdrawals")
+    EntityKillAllWithTag("pharma_addiction_effect")
     EntityKill(this)
 end
 

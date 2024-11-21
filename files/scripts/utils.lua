@@ -166,3 +166,10 @@ function PickRandomFromTableWeighted(x, y, table) -- i stole from utilities.lua
     end
     return result
 end
+
+function EntityKillAllWithTag(tag)
+    local targets = EntityGetWithTag(tag)
+    for i,target in ipairs(targets) do
+        EntityKill(target)
+    end
+end

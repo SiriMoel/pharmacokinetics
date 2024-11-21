@@ -16,36 +16,26 @@ if baramount > 0 then
     IncreasePharmaBarAmount(-1)
 end
 
+if addiction_level >= 1 then
+    if GameGetGameEffectCount(player, "PHARMACOKINETICS_ADDICTION") < 1 then
+        local addiction = EntityLoad("mods/pharmacokinetics/files/entities/misc/effect_addiction/effect.xml", x, y)
+        EntityAddChild(player, addiction)
+    end
+else
+    EntityKillAllWithTag("pharma_addiction_effect")
+end
+
 if frame > check_addiction_frame + 2400 then
-    if baramount > 0 then
-        if baramount > (baramount_old * 0.8) or baramount >= 450 then
-            addiction_level = addiction_level + 1
-            if addiction_level > 10 then
-                addiction_level = 10
-            end
-        else
-            addiction_level = addiction_level - 1
-            if addiction_level < 0 then
-                addiction_level = 0
-            end
-        end
+    if baramount > baramount_old and baramount > 0 then
+        addiction_level = addiction_level + 0.2
+        baramount_old = baramount
     else
-        addiction_level = addiction_level - 1
+        addiction_level = addiction_level - 0.4
         if addiction_level < 0 then
             addiction_level = 0
         end
     end
-    if addiction_level >= 1 then
-        if GameGetGameEffectCount(player, "PHARMACOKINETICS_ADDICTION") < 1 then
-            local addiction = EntityLoad("mods/pharmacokinetics/files/entities/misc/effect_addiction/effect.xml", x, y)
-            EntityAddChild(player, addiction)
-        end
-    else
-        local targets = EntityGetWithTag("pharma_addiction_effect")
-        for i,target in ipairs(targets) do
-            EntityKill(target)
-        end
-    end
+    GlobalsSetValue("pharmacokinetics.amount_old", tostring(baramount_old))
     GlobalsSetValue("pharmacokinetics.addiction_level", tostring(addiction_level))
     GlobalsSetValue("pharmacokinetics.check_addiction_frame", tostring(frame))
 end
@@ -64,6 +54,3 @@ if baramount >= 500 and not GameHasFlagRun("pharma_overdose_immunity") then
 end
 
 --GamePrint("addiction level: " .. tostring(addiction_level)) -- TESTING
-
-baramount_old = baramount
-GlobalsSetValue("pharmacokinetics.amount_old", tostring(baramount_old))

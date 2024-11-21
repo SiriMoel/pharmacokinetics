@@ -178,6 +178,8 @@ local example_growthstages = {
         ttguexf = -1, -- if -1, wont grow. if isfinal then the plant will die upon growing up.
         script_death = "path.lua",
         sprite = "path.xml",
+        offset_x = 0,
+        offset_y = 0,
         height = 48,
     },
 }
@@ -335,5 +337,25 @@ function Plant_GrowUp(plant, x, y)
         dofile_once(ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage - 1) .."_script_death") or 0, "value_string") or "")
         plant_death(plant, x, y)
         EntityKill(plant)
+    end
+end
+
+function Plant_Fruit(plant, x, y)
+    local fruitmaxneartree = tonumber(GlobalsGetValue("pharmacokinetics.maxfruitamountneartree"))
+    if #EntityGetInRadiusWithTag(x, y, 80, "pharma_fruit") >= fruitmaxneartree then return end
+    local frame = GameGetFrameNum()
+    local comp_fruit_path = EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_path")
+    if comp_fruit_path == nil then return end
+    local fruit_path = ComponentGetValue2(comp_fruit_path, "value_string")
+    math.randomseed(x + frame, y + frame)
+    local currentstage = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_current_stage") or 0, "value_int")
+    local height = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_stage_" .. tostring(currentstage) .."_height") or 0, "value_int")
+    local fruit_x = x + math.random(-10, 10)
+    local fruit_y = y - height
+    local fruitmax = tonumber(GlobalsGetValue("pharmacokinetics.maxfruitamountperfruiting", "2")) or 2
+    local amount = math.random(0, fruitmax)
+    for i=1,amount do
+        fruit_x = x + math.random(-15, 15)
+        local fruit = EntityLoad(fruit_path, fruit_x, fruit_y)
     end
 end
