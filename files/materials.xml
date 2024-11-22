@@ -160,7 +160,7 @@
 		<StatusEffects>
 			<Ingestion>
 				<StatusEffect type="PHARMACOKINETICS_WIZARDDUST" amount="0.3" />
-				<StatusEffect type="PHARMACOKINETICS_MAGIC_POWDER_INGESTED" amount="1" />
+				<StatusEffect type="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED" amount="1" />
 			</Ingestion>
 		</StatusEffects>
   	</CellData>
@@ -226,7 +226,7 @@
 		<StatusEffects>
 			<Ingestion>
 				<StatusEffect type="PHARMACOKINETICS_LOVE" amount="0.2" />
-				<StatusEffect type="PHARMACOKINETICS_MAGIC_POWDER_INGESTED" amount="1" />
+				<StatusEffect type="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED" amount="1" />
 			</Ingestion>
 		</StatusEffects>
   	</CellData>

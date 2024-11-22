@@ -11,7 +11,7 @@ function OnWorldPreUpdate()
         baramount = GetPharmaBarAmount()
         barvalue = math.max((baramount / 500) * 100, 0)
         addictionlevel = tonumber(GlobalsGetValue("pharmacokinetics.addiction_level", "0"))
-        addictionbarvalue = math.max((addictionlevel / 10) * 100, 0)
+        addictionbarvalue = math.min(math.max((addictionlevel / 10) * 100, 0), 100)
     end
 end
 
