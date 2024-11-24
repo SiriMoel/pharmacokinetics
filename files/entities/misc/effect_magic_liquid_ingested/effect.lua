@@ -11,21 +11,20 @@ if not EntityHasTag(player, "pharma_immune") then
     local magic_liquid_ingested_frame = tonumber(GlobalsGetValue("pharmacokinetics.magic_liquid_ingested_frame", "0"))
     local amount = math.random(1, 5)
     local drank_from_flask = false
-    local targets = EntityGetAllChildren(player, "potion") or {}
+    local targets = EntityGetInRadiusWithTag(x, y, 20, "potion")
     for i=1,#targets do
         local comp = EntityGetFirstComponentIncludingDisabled(targets[i], "MaterialInventoryComponent")
-        if comp == nil then return end
-        local last_frame_drank = ComponentGetValue2(comp, "last_frame_drank")
-        if frame < last_frame_drank + 5 then
-            drank_from_flask = true
-            GamePrint("flask drank from") -- TESTING
-            break
+        if comp ~= nil then
+            local last_frame_drank = ComponentGetValue2(comp, "last_frame_drank")
+            if frame < last_frame_drank + 10 then
+                drank_from_flask = true
+                break
+            end
         end
     end
     if drank_from_flask then
-        amount = amount * 4 -- 4 to 20
+        amount = math.random(5, 30)
     end
-    GamePrint(tostring(amount))
     if addiction_level >= 1 and frame < magic_liquid_ingested_frame + 20 then
         addiction_level = addiction_level + 0.2
     end

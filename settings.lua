@@ -41,7 +41,7 @@ mod_settings = {
 	{
         id = "maxfruitamountneartree",
         ui_name = "Maximum fruit amount near tree",
-        ui_description = "Trees wont fruit if this amount of fruit is near them already (for performance purposes).",
+        ui_description = "Trees wont fruit if this amount of fruit is near them already.",
         value_default = 5,
         value_min = 1,
         value_max = 20,
