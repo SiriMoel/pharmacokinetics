@@ -93,6 +93,7 @@ function OnPlayerSpawned(player)
 
 	--EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", px, py)
 	--EntityLoad("mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", px, py)
+	--EntityLoad("mods/pharmacokinetics/files/entities/items/potion_powder/item.xml", px, py)
 
 	-- END TESTING
 

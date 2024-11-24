@@ -60,6 +60,26 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                 end,
                             },
                             {
+                                name = "S.A.N.D. Potion",
+                                desc = "Stores powders. Can be eaten from.",
+                                price = 200,
+                                func = function(x, y)
+                                    EntityLoad("mods/pharmacokinetics/files/entities/items/potion_powder/item.xml", x, y)
+                                    dialog.show({
+                                        text = "Transaction successful.",
+                                        options = {
+                                            {
+                                                text="Close",
+                                                func = function(dialog)
+                                                    dialog.close()
+                                                end,
+                                            },
+                                        },
+                                    })
+                                    SetShopMultiplier(GetShopMultiplier() + 0.02)
+                                end,
+                            },
+                            {
                                 name = "Demagified pharmadust pouch",
                                 desc = "A pouch filled with demagified pharmadust.\n Just add magic (liquid)!",
                                 price = 10000,
