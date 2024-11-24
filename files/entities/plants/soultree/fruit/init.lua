@@ -10,7 +10,11 @@ if soul == nil then
     print("PHARMACOKINETICS - could not assign soul to fruit")
 end
 
+--print("PHARMACOKINETICS - trying to spawn soul tree fruit")
+
 ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(this, "VariableStorageComponent", "pharma_soul") or 0, "value_string", soul)
 ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(this, "PhysicsImageShapeComponent") or 0, "image_file", "mods/souls/files/entities/souls/sprites/soul_" .. soul .. ".png")
 ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(this, "ItemComponent") or 0, "ui_sprite", "mods/souls/files/entities/souls/sprites/soul_" .. soul .. ".png")
 ComponentSetValue2(EntityGetFirstComponentIncludingDisabled(this, "SpriteComponent") or 0, "image_file", "mods/souls/files/entities/souls/sprites/soul_" .. soul .. ".png")
+
+EntityRefreshSprite(this, EntityGetFirstComponentIncludingDisabled(this, "SpriteComponent") or 0)

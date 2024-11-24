@@ -8,7 +8,10 @@ function kick(entity_who_kicked)
 
 	if fruit ~= EntityGetRootEntity(fruit) then return end
 
-    AddSouls(ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(this, "VariableStorageComponent", "pharma_soul") or 0, "value_string"), 1)
+    local soul = ComponentGetValue2(EntityGetFirstComponentIncludingDisabled(fruit, "VariableStorageComponent", "pharma_soul") or 0, "value_string")
+
+    AddSouls(soul, 1)
+    GamePrint("You have acquried a " .. SoulNameCheck(soul) .. " soul!")
 
     EntityKill(fruit)
 end

@@ -91,7 +91,9 @@ function OnPlayerSpawned(player)
 
 	--print(ModTextFileGetContent("data/shaders/post_final.frag"))
 
-	--EntityLoad("mods/pharmacokinetics/files/entities/plants/magicflasktree/seed/seed.xml", px, py)
+	for i=1,4 do
+		EntityLoad("mods/pharmacokinetics/files/entities/plants/soultree/seed/seed.xml", px, py)
+	end
 	--EntityLoad("mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", px, py)
 	--EntityLoad("mods/pharmacokinetics/files/entities/items/potion_powder/item.xml", px, py)
 

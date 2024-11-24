@@ -354,6 +354,7 @@ function Plant_Fruit(plant, x, y)
     local fruit_y = y - height
     local fruitmax = tonumber(GlobalsGetValue("pharmacokinetics.maxfruitamountperfruiting", "2")) or 2
     local amount = math.random(0, fruitmax)
+    --print("PHARMACOKINETICS - plant attempting to fruit")
     for i=1,amount do
         fruit_x = x + math.random(-15, 15)
         local fruit = EntityLoad(fruit_path, fruit_x, fruit_y)
