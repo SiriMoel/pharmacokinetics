@@ -1,22 +1,23 @@
 (imgur embed with mod title)
 
-An alchemy mod about managing your magic liquid intake.
+An alchemy mod about managing your magical liquid intake.
 This mod adds new materials, merchant npcs, growable plants with fruit, and a stat bar to manage.
 
-Find new ways to ingest magic liquids, and create new magic materials.
+Find new ways to ingest magical liquids, create new magical materials, and grow plants. 
+Get addicted to magical liquids.
 Be careful not to let the bar fill up completely...
 
 (imgur embed with fancy looking bar?)
 
-[b][/b] new materials
-[b][/b] new items
-[b][/b] npcs
-[b][/b] plants
+[b]8[/b] new materials
+[b]4+[/b] new items
+[b]4[/b] npcs
+[b]5[/b] plants
 
 (imgur embed with datura flowers?)
 
 Cross-mod interactions with:
-[b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3272653027]Forsaken Delicacies[/url][/b] item for sale from npc
+[b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3272653027]Forsaken Delicacies[/url][/b] new purchaseable item
 [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3313573016]Souls[/url][/b] new npc, new plant
 This mod should load after Forsaken Delicacies and Souls for compatibility to work.
 

@@ -36,7 +36,7 @@ local to_insert = {
 		ui_description="$statusdesc_moldos_datura_2",
 		ui_icon="mods/pharmacokinetics/files/status_indicators/datura.png",
 		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_datura_01/effect.xml",
-		min_threshold_normalized=0.5,
+		min_threshold_normalized=0.35,
 	},
 	{
 		id="PHARMACOKINETICS_DATURA",
@@ -44,7 +44,7 @@ local to_insert = {
 		ui_description="$statusdesc_moldos_datura_3",
 		ui_icon="mods/pharmacokinetics/files/status_indicators/datura.png",
 		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_datura_02/effect.xml",
-		min_threshold_normalized=1.5,
+		min_threshold_normalized=7,
 	},
 	{
 		id="PHARMACOKINETICS_DATURA",
@@ -52,7 +52,7 @@ local to_insert = {
 		ui_description="$statusdesc_moldos_datura_4",
 		ui_icon="mods/pharmacokinetics/files/status_indicators/datura.png",
 		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_datura_03/effect.xml",
-		min_threshold_normalized=2.5,
+		min_threshold_normalized=1.5,
 	},
 	{
 		id="PHARMACOKINETICS_PHARMADUST",
