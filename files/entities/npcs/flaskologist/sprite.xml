@@ -1,7 +1,7 @@
 	<Sprite
 		filename="mods/pharmacokinetics/files/entities/npcs/flaskologist/sprite.png"
 		offset_x="8"
-		offset_y="14"
+		offset_y="16"
 		default_animation="stand"
 	>
 

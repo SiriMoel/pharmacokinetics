@@ -3,8 +3,9 @@
 	<InheritTransformComponent>
     </InheritTransformComponent>	
     
-    <GameEffectComponent 
-        effect="PHARMACOKINETICS_W"
+    <GameEffectComponent
+    	effect="CUSTOM"
+        custom_effect_id="PHARMACOKINETICS_W"
         frames="600"
     >
 	</GameEffectComponent>

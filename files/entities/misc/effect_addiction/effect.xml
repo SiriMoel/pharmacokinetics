@@ -4,7 +4,8 @@
     </InheritTransformComponent>	
     
     <GameEffectComponent
-        effect="PHARMACOKINETICS_ADDICTION"
+		effect="CUSTOM"
+        custom_effect_id="PHARMACOKINETICS_ADDICTION"
         frames="-1"
     >
 	</GameEffectComponent>

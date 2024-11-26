@@ -4,7 +4,8 @@
     </InheritTransformComponent>	
     
     <GameEffectComponent 
-        effect="PHARMACOKINETICS_REDUCE_PHARMABAR_SMALL"
+    	effect="CUSTOM"
+        custom_effect_id="PHARMACOKINETICS_REDUCE_PHARMABAR_SMALL"
         frames="2"
     >
 	</GameEffectComponent>

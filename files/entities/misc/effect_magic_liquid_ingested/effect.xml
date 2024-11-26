@@ -4,7 +4,8 @@
     </InheritTransformComponent>	
     
     <GameEffectComponent 
-        effect="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED"
+    	effect="CUSTOM"
+        custom_effect_id="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED"
         frames="2"
     >
 	</GameEffectComponent>

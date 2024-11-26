@@ -40,7 +40,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                     SetShopMultiplier(GetShopMultiplier() + 0.5) -- try kindness!
                                 end,
                             },
-                            {
+                            --[[{
                                 name = "Mystery magical liquid flask",
                                 desc = "A normal flask filled with a random magical liquid.",
                                 price = 300,
@@ -59,7 +59,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                     })
                                     SetShopMultiplier(GetShopMultiplier() + 0.01)
                                 end,
-                            },
+                            },]]
                             {
                                 name = "Translocator: A better way to consume materials!",
                                 desc = "Takes your current held material carrying item and turns it \ninto a translocator. \nKick it to consume the material contained within.",

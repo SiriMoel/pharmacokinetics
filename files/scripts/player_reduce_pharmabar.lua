@@ -31,7 +31,7 @@ end
 
 if frame > check_addiction_frame + 2400 then
     if baramount > baramount_old and baramount > 0 then
-        addiction_level = addiction_level + 0.2
+        addiction_level = addiction_level + 0.4
         baramount_old = baramount
     else
         addiction_level = addiction_level - 0.4

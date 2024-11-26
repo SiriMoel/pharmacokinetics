@@ -4,23 +4,24 @@
     </InheritTransformComponent>	
     
     <GameEffectComponent
-        effect="PHARMACOKINETICS_WITHDRAWALS"
-        frames="300"
+		effect="CUSTOM"
+        custom_effect_id="PHARMACOKINETICS_WITHDRAWALS"
+        frames="540"
     >
 	</GameEffectComponent>
 
 	<LifetimeComponent
-		lifetime="300"
+		lifetime="540"
 	></LifetimeComponent>
 
 	<LuaComponent
-		script_source_file="mods/pharmacokinetics/files/entitties/misc/effect_withdrawals/twitch.lua"
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_withdrawals/twitch.lua"
 		execute_every_n_frame="60"
 		>
 	</LuaComponent>
 
 	<LuaComponent
-		script_shot="mods/pharmacokinetics/files/entitties/misc/effect_withdrawals/shot.lua"
+		script_shot="mods/pharmacokinetics/files/entities/misc/effect_withdrawals/shot.lua"
 		execute_every_n_frame="-1"
 		>
 	</LuaComponent>
@@ -30,10 +31,16 @@
 		execute_every_n_frame="1"
 	></LuaComponent>
 
+	
+	<LuaComponent
+		script_source_file="mods/pharmacokinetics/files/entities/misc/effect_withdrawals/end.lua"
+		execute_on_removed="1"
+	></LuaComponent>
+
 	<UIIconComponent
 		name="$status_moldos_withdrawals"
 		description="$statusdesc_moldos_withdrawals"
-		icon_sprite_file="mods/pharmacokinetics/files/status_indicators/addiction.png"
+		icon_sprite_file="mods/pharmacokinetics/files/status_indicators/withdrawals.png"
 		is_perk="0"
 		display_above_head="1"
 		display_in_hud="1"

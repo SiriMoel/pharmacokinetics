@@ -25,7 +25,7 @@ if not EntityHasTag(player, "pharma_immune") then
     if drank_from_flask then
         amount = math.random(5, 30)
     end
-    if addiction_level >= 1 and frame < magic_liquid_ingested_frame + 20 then
+    if addiction_level >= 1 and frame < magic_liquid_ingested_frame + 40 then
         addiction_level = addiction_level + 0.2
     end
     if frame > magic_liquid_ingested_frame + 600 and frame < magic_liquid_ingested_frame + 3600 then

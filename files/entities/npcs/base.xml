@@ -13,7 +13,7 @@
 	    aabb_min_x="-1" 
 	    aabb_max_x="1" 
 	    aabb_min_y="-6" 
-	    aabb_max_y="-5" 
+	    aabb_max_y="6" 
 	  >
 	</HitboxComponent>
 

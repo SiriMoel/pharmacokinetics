@@ -4,7 +4,8 @@
     </InheritTransformComponent>	
     
     <GameEffectComponent
-        effect="PHARMACOKINETICS_LOVE"
+		effect="CUSTOM"
+        custom_effect_id="PHARMACOKINETICS_LOVE"
         frames="600"
     >
 	</GameEffectComponent>

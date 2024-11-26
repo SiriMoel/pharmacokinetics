@@ -4,7 +4,8 @@
     </InheritTransformComponent>	
     
     <GameEffectComponent
-        effect="PHARMACOKINETICS_WIZARDDUST"
+    	effect="CUSTOM"
+        custom_effect_id="PHARMACOKINETICS_WIZARDDUST"
         frames="600"
     >
 	</GameEffectComponent>

@@ -58,6 +58,12 @@ local scenes = {
 	{ 10060, -1201 - 6, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", false },
 	{ -15949, -6396, "mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", false },
 	{ 14220, 7551, "mods/pharmacokinetics/files/entities/npcs/flaskologist/npc.xml", false },
+	
+	--{ -40, -200, "mods/pharmacokinetics/files/entities/npcs/flaskologist/npc.xml", false },
+	--{ -20, -200, "mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", false },
+	--{ 0, -200, "mods/pharmacokinetics/files/entities/npcs/shaman/npc.xml", false },
+	--{ 20, -200, "mods/pharmacokinetics/files/entities/npcs/sormi/npc.xml", false },
+	--{ 40, -200, "mods/pharmacokinetics/files/entities/npcs/soultrader/npc.xml", false },
 }
 
 if ModIsEnabled("souls") then
@@ -89,9 +95,9 @@ function OnPlayerSpawned(player)
 		print("pharmacokinetics - found materials file:  " .. v)
 	end]]
 	--print(ModTextFileGetContent("data/shaders/post_final.frag"))
-	for i=1,4 do
+	--[[for i=1,4 do
 		EntityLoad("mods/pharmacokinetics/files/entities/plants/soultree/seed/seed.xml", px, py)
-	end
+	end]]
 	--EntityLoad("mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", px, py)
 	--EntityLoad("mods/pharmacokinetics/files/entities/items/potion_powder/item.xml", px, py)
 	-- END TESTING
@@ -113,7 +119,7 @@ function OnPlayerSpawned(player)
 
     EntityAddComponent2(player, "LuaComponent", {
 		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",
-		execute_every_n_frame=55,
+		execute_every_n_frame=70,
 	})
 
 	--[[EntityAddComponent2(player, "LuaComponent", {

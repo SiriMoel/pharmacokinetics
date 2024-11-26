@@ -13,7 +13,7 @@ function damage_about_to_be_received(damage, x, y, entity_thats_responsible, cri
         end
 
         if GameHasFlagRun("pharma_withdrawals") then
-            damage = damage * 1.4
+            damage = damage * 2
         end
 
         if addiction_level >= 3 then
