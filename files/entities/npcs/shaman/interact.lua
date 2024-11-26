@@ -19,7 +19,7 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                     local shoptions = {
                         {
                             name = "Datura Seed",
-                            desc = "A mystical and dangerous plant.",
+                            desc = "A mystical and dangerous plant. \nMay help manage your affliction if you ingest enough...",
                             price = 10000,
                             func = function(x, y)
                                 EntityLoad("mods/pharmacokinetics/files/entities/plants/datura/seed/seed.xml", x, y)
@@ -37,9 +37,29 @@ function interacting( entity_who_interacted, entity_interacted, interactable_nam
                                 SetShopMultiplier(GetShopMultiplier() + 0.01)
                             end,
                         },
+                        {
+                            name = "Spell Shrub Seed",
+                            desc = "Grow spells!",
+                            price = 10000,
+                            func = function(x, y)
+                                EntityLoad("mods/pharmacokinetics/files/entities/plants/spellshrub/seed/seed.xml", x, y)
+                                dialog.show({
+                                    text = "Transaction successful.",
+                                    options = {
+                                        {
+                                            text="Close",
+                                            func = function(dialog)
+                                                dialog.close()
+                                            end,
+                                        },
+                                    },
+                                })
+                                SetShopMultiplier(GetShopMultiplier() + 0.01)
+                            end,
+                        },
                     }
                     if ModIsEnabled("forsdel") then
-                        table.insert(shoptions, 
+                        table.insert(shoptions,
                         {
                             name = "Crossgourd Seed",
                             desc = "This truly is a forsaken delicacy.",

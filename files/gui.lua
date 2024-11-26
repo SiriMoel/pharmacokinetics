@@ -44,12 +44,12 @@ function GuiRender()
     local height = 1
     local width = 40.25
 
-    if ModSettingGet("pharmacokinetics.pharmabar_at_soulsgui") then
+    --[[if ModSettingGet("pharmacokinetics.pharmabar_at_soulsgui") then
         x = 455
         y = 320
         height = 6
         width = 45
-    end
+    end]]
 
     GuiImageNinePiece(gui, gui_id, x, y, width * (addictionbarvalue * 0.01), height, 0.6, "mods/pharmacokinetics/files/gui/bar_addiction.png")
     GuiZSetForNextWidget(gui, 1000 + 2)

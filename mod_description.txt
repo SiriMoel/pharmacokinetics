@@ -1,20 +1,20 @@
 (imgur embed with mod title)
+[img]https://i.imgur.com/lcPs8b0.png[/img]
 
 An alchemy mod about managing your magical liquid intake.
-This mod adds new materials, merchant npcs, growable plants with fruit, and a stat bar to manage.
+This mod adds new materials, merchant npcs, growable plants, and a stat bar to manage.
 
-Find new ways to ingest magical liquids, create new magical materials, and grow plants. 
-Get addicted to magical liquids.
-Be careful not to let the bar fill up completely...
+Manage how you ingest magical liquids, create new magical materials, and grow plants. 
+Try not to get addicted to magical liquids & be careful not to let the bar fill up completely.
 
-(imgur embed with fancy looking bar?)
+[img]https://i.imgur.com/7G0Ht3W.png[/img]
 
 [b]8[/b] new materials
 [b]4+[/b] new items
 [b]4[/b] npcs
-[b]5[/b] plants
+[b]4[/b] plants
 
-(imgur embed with datura flowers?)
+[img]https://i.imgur.com/QCUlDDt.png[/img]
 
 Cross-mod interactions with:
 [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3272653027]Forsaken Delicacies[/url][/b] new purchaseable item
@@ -24,4 +24,4 @@ This mod should load after Forsaken Delicacies and Souls for compatibility to wo
 Discord: https://discord.gg/FKaRA9HMUq
 Github: https://github.com/SiriMoel/pharmacokinetics
 
-(imgur embed showing translocator?)
+[img]https://i.imgur.com/EhgHYzu.png[/img]

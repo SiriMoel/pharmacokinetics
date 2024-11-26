@@ -1,5 +1,7 @@
 <Entity name="$npc_moldos_mysteriousstranger" tags="hittable">
 
+    <Base file="mods/pharmacokinetics/files/entities/npcs/base.xml"> </Base>
+
     <SpriteComponent 
 		image_file="mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/sprite.xml" 
 		offset_x="0"
@@ -18,12 +20,5 @@
         execute_every_n_frame="1"
         enable_coroutines="1" >
     </LuaComponent>
-
-    <!--<SimplePhysicsComponent 
-        can_go_up="0"
-        >
-    </SimplePhysicsComponent >
-    
-    <VelocityComponent />-->
 
 </Entity>

@@ -1,0 +1,20 @@
+<Entity> 
+
+    <!-- how can i give npcs the ability to fall? -->
+
+    <SimplePhysicsComponent 
+        can_go_up="0"
+        >
+    </SimplePhysicsComponent >
+    
+    <VelocityComponent />
+
+    <HitboxComponent 
+	    aabb_min_x="-1" 
+	    aabb_max_x="1" 
+	    aabb_min_y="-6" 
+	    aabb_max_y="-5" 
+	  >
+	</HitboxComponent>
+
+</Entity>

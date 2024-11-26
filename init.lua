@@ -5,6 +5,7 @@ dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
 dofile_once("mods/pharmacokinetics/lib/DialogSystem/init.lua")("mods/pharmacokinetics/lib/DialogSystem")
 dofile_once("mods/pharmacokinetics/lib/injection.lua")
 
+-- materials
 ModMaterialsFileAdd("mods/pharmacokinetics/files/materials.xml")
 ModMaterialsFileAdd("mods/pharmacokinetics/files/reactions.xml")
 
@@ -84,19 +85,15 @@ function OnPlayerSpawned(player)
     if GameHasFlagRun("pharmacokinetics_init") then return end
 
 	-- TESTING (also see pixel scenes, there may be some testing things there)
-
 	--[[for i,v in ipairs(materials_files) do
 		print("pharmacokinetics - found materials file:  " .. v)
 	end]]
-
 	--print(ModTextFileGetContent("data/shaders/post_final.frag"))
-
 	for i=1,4 do
 		EntityLoad("mods/pharmacokinetics/files/entities/plants/soultree/seed/seed.xml", px, py)
 	end
 	--EntityLoad("mods/pharmacokinetics/files/entities/npcs/mysterious_stranger/npc.xml", px, py)
 	--EntityLoad("mods/pharmacokinetics/files/entities/items/potion_powder/item.xml", px, py)
-
 	-- END TESTING
 
     GlobalsSetValue("pharmacokinetics.amount", "0")
@@ -113,7 +110,6 @@ function OnPlayerSpawned(player)
 	GlobalsSetValue("pharmacokinetics.magic_liquid_ingested_frame", "0")
 	GlobalsSetValue("pharmacokinetics.maxfruitamountperfruiting", "2")
 	GlobalsSetValue("pharmacokinetics.maxfruitamountneartree", "5")
-
 
     EntityAddComponent2(player, "LuaComponent", {
 		script_source_file="mods/pharmacokinetics/files/scripts/player_reduce_pharmabar.lua",

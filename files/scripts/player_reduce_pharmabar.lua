@@ -25,6 +25,7 @@ if addiction_level >= 1 then
         addiction_level = 10
     end
 else
+    GameRemoveFlagRun("pharma_withdrawals")
     EntityKillAllWithTag("pharma_addiction_effect")
 end
 

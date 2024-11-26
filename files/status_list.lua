@@ -94,7 +94,7 @@ local to_insert = {
 		ui_name="$status_moldos_withdrawals",
 		ui_description="$statusdesc_moldos_withdrawals",
 		ui_icon="mods/pharmacokinetics/files/status_indicators/addiction.png",
-		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_addiction/effect.xml",
+		effect_entity="mods/pharmacokinetics/files/entities/misc/effect_withdrawals/effect.xml",
 	},
 }
 
