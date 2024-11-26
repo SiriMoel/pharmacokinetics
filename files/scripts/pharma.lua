@@ -341,7 +341,7 @@ function Plant_GrowUp(plant, x, y)
 end
 
 function Plant_Fruit(plant, x, y)
-    local fruitmaxneartree = tonumber(GlobalsGetValue("pharmacokinetics.maxfruitamountneartree"))
+    local fruitmaxneartree = tonumber(GlobalsGetValue("pharmacokinetics.maxfruitamountneartree", "5")) or 5
     if #EntityGetInRadiusWithTag(x, y, 80, "pharma_fruit") >= fruitmaxneartree then return end
     local frame = GameGetFrameNum()
     local comp_fruit_path = EntityGetFirstComponentIncludingDisabled(plant, "VariableStorageComponent", "pharmaplant_fruit_path")

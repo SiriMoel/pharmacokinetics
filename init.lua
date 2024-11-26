@@ -15,24 +15,6 @@ ModLuaFileAppend( "data/scripts/status_effects/status_list.lua", "mods/pharmacok
 -- nxml
 local nxml = dofile_once("mods/pharmacokinetics/lib/nxml.lua")
 
-local materials_files = ModMaterialFilesGet() -- this function does NOT work how its meant to
-for i,file in ipairs(materials_files) do
-	local materials = ModTextFileGetContent(file)
-	local xml = nxml.parse(materials)
-	for element in xml:each_child() do
-	    if element.attr.tags ~= nil and string.find(element.attr.tags, "[^%a]magic_liquid[^%a]") then
-        	for child in element:each_of("StatusEffects") do
-	            for childdos in child:each_of("Ingestion") do
-                	childdos:add_child(nxml.parse([[
-	                    <StatusEffect type="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED" amount="1" />
-                	]]))
-            	end
-        	end
-    	end
-	end
-	ModTextFileSetContent(file, tostring(xml))
-end
-
 -- pixel scenes (thanks graham)
 local function add_scene(table)
 	local biome_path = ModIsEnabled("noitavania") and "mods/noitavania/data/biome/_pixel_scenes.xml" or "data/biome/_pixel_scenes.xml"
@@ -80,6 +62,26 @@ GameSetPostFxParameter("pharma_datura_effect_amount", 0, 0, 0, 0)
 GameSetPostFxParameter("pharma_pharmadust_effect_amount", 0, 0, 0, 0)
 GameSetPostFxParameter("pharma_wizarddust_effect_amount", 0, 0, 0, 0)
 GameSetPostFxParameter("pharma_love_effect_amount", 0, 0, 0, 0)
+
+function OnMagicNumbersAndWorldSeedInitialized()
+	local materials_files = ModMaterialFilesGet() -- this function does NOT work how its meant to (I SURE HOPE IT WORKS HERE)
+	for i,file in ipairs(materials_files) do
+		local materials = ModTextFileGetContent(file)
+		local xml = nxml.parse(materials)
+		for element in xml:each_child() do
+		    if element.attr.tags ~= nil and string.find(element.attr.tags, "[^%a]magic_liquid[^%a]") then
+        		for child in element:each_of("StatusEffects") do
+		            for childdos in child:each_of("Ingestion") do
+                		childdos:add_child(nxml.parse([[
+		                    <StatusEffect type="PHARMACOKINETICS_MAGIC_LIQUID_INGESTED" amount="1" />
+                		]]))
+            		end
+        		end
+    		end
+		end
+		ModTextFileSetContent(file, tostring(xml))
+	end
+end
 
 -- player
 function OnPlayerSpawned(player)

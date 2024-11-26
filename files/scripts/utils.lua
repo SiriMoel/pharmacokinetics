@@ -150,6 +150,7 @@ end
 
 function PickRandomFromTableWeighted(x, y, table) -- i stole from utilities.lua
     if #table == 0 then return nil end
+    math.randomseed(x, y)
     local weight_sum = 0.0
     for i,v in ipairs(table) do
         v.weight_min = weight_sum

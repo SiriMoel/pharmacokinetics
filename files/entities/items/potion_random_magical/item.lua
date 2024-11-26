@@ -2,8 +2,9 @@ dofile_once("mods/pharmacokinetics/files/scripts/utils.lua")
 dofile_once("mods/pharmacokinetics/files/scripts/pharma.lua")
 
 function init( entity_id )
-	local x,y = EntityGetTransform( entity_id )
-	math.randomseed(x, y + GameGetFrameNum())
+	local x, y = EntityGetTransform( entity_id )
+    local frame = GameGetFrameNum()
+	math.randomseed(x + frame, y + frame)
 
     local materials = {
         { probability = 0.9, id = "magic_liquid_movement_faster", },
@@ -18,7 +19,7 @@ function init( entity_id )
         { probability = 0.9, id = "magic_liquid_movement_charm", },
     }
 
-	local which = PickRandomFromTableWeighted(x + GameGetFrameNum(), y + GameGetFrameNum(), materials) or {}
+	local which = PickRandomFromTableWeighted(x + frame, y + frame, materials) or {}
 
 	AddMaterialInventoryMaterial( entity_id, which.id, 1000 )
 end

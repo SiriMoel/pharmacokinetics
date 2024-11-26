@@ -1,4 +1,3 @@
-(imgur embed with mod title)
 [img]https://i.imgur.com/lcPs8b0.png[/img]
 
 An alchemy mod about managing your magical liquid intake.
@@ -10,7 +9,7 @@ Try not to get addicted to magical liquids & be careful not to let the bar fill 
 [img]https://i.imgur.com/7G0Ht3W.png[/img]
 
 [b]8[/b] new materials
-[b]4+[/b] new items
+[b]6+[/b] new items
 [b]4[/b] npcs
 [b]4[/b] plants
 
