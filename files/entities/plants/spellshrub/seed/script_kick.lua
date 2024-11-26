@@ -16,7 +16,7 @@ function kick(entity_who_kicked)
 			sprite = "mods/pharmacokinetics/files/entities/plants/spellshrub/1.xml",
 			offset_x = 0,
 			offset_y = 0,
-			height = 12,
+			height = 7,
 		},
 		{
 			name = "2",
@@ -26,7 +26,7 @@ function kick(entity_who_kicked)
 			sprite = "mods/pharmacokinetics/files/entities/plants/spellshrub/2.xml",
 			offset_x = 0,
 			offset_y = 0,
-			height = 32,
+			height = 16,
 		},
 		{
 			name = "3",
@@ -36,7 +36,7 @@ function kick(entity_who_kicked)
 			sprite = "mods/pharmacokinetics/files/entities/plants/spellshrub/3.xml",
             offset_x = 0,
 			offset_y = 0,
-			height = 64,
+			height = 20,
 		},
     }, "mods/pharmacokinetics/files/entities/plants/spellshrub/fruit/fruit.xml")
 
