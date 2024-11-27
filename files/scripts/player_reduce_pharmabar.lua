@@ -17,7 +17,7 @@ if baramount > 0 then
 end
 
 if addiction_level >= 1 then
-    if GameGetGameEffectCount(player, "PHARMACOKINETICS_ADDICTION") < 1 then
+    if #EntityGetWithTag("pharma_addiction_effect_entity") < 1 then
         local addiction = EntityLoad("mods/pharmacokinetics/files/entities/misc/effect_addiction/effect.xml", x, y)
         EntityAddChild(player, addiction)
     end

@@ -1,4 +1,4 @@
-<Entity tags="pharma_addiction_effect">
+<Entity tags="pharma_addiction_effect,pharma_addiction_effect_entity">
 	
 	<InheritTransformComponent>
     </InheritTransformComponent>	

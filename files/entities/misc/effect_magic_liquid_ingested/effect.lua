@@ -9,7 +9,7 @@ if not EntityHasTag(player, "pharma_immune") then
     math.randomseed(frame, frame)
     local addiction_level = tonumber(GlobalsGetValue("pharmacokinetics.addiction_level", "0"))
     local magic_liquid_ingested_frame = tonumber(GlobalsGetValue("pharmacokinetics.magic_liquid_ingested_frame", "0"))
-    local amount = math.random(1, 5)
+    local amount = math.random(1, 3)
     local drank_from_flask = false
     local targets = EntityGetInRadiusWithTag(x, y, 20, "potion")
     for i=1,#targets do
