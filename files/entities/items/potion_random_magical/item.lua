@@ -15,8 +15,13 @@ function init( entity_id )
         { probability = 0.9, id = "magic_liquid_faster_levitation", },
         { probability = 0.6, id = "magic_liquid_polymorph", },
         { probability = 0.6, id = "magic_liquid_teleportation", },
-        { probability = 0.7, id = "magic_liquid_movement_worm_attractor", },
-        { probability = 0.9, id = "magic_liquid_movement_charm", },
+        { probability = 0.7, id = "magic_liquid_worm_attractor", },
+        { probability = 0.5, id = "blood_worm", },
+        { probability = 0.6, id = "magic_liquid_invisibilty", },
+        { probability = 0.9, id = "magic_liquid_charm", },
+        { probability = 0.01, id = "magic_liquid_hp_regeneration", },
+        { probability = 0.01, id = "midas_precursor", },
+        { probability = 0.01, id = "pharma_daturadust", },
     }
 
 	local which = PickRandomFromTableWeighted(x + frame, y + frame, materials) or {}
